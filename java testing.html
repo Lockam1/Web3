@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html style="height:100%">
+    <head>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    </head>
+    <body style="height:100%">
+        <h1>Heading</h1>
+        <p id="myParagraph">
+            Paragraph!!
+        </p>
+        <input type="text" />
+    </body>
+    <script>        
+        var timeout = null;
+        $("input").on("keyup", function(){
+            var self = $(this);
+            if(timeout)
+                clearTimeout(timeout);
+            
+            timeout = setTimeout(function(){
+                var newP = $("<p></p>");
+                newP.text(self.val());
+                var red = Math.floor(Math.random() * 255);
+                var green = Math.floor(Math.random() * 255);
+                var blue = Math.floor(Math.random() * 255);
+
+                newP.css("color","rgb("+red+","+green+","+blue+")");
+                $("#myParagraph").append(newP);
+                self.val("");
+                clearTimeout(timeout);
+            },1000);            
+        });
+        
+        $("body").on("click", function(e){ 
+            console.log(e);
+            var self = $(this);
+            var div = $("<div></div>");
+            var red = Math.floor(Math.random() * 255);
+            var green = Math.floor(Math.random() * 255);
+            var blue = Math.floor(Math.random() * 255);
+            var left = Math.floor(Math.random() * 1920);
+            var top = Math.floor(Math.random() * 1080);
+            var radius = Math.floor(Math.random() * 50);
+            var width = Math.floor(Math.random() * 200);
+            var height = Math.floor(Math.random() * 200);
+
+            div.css({
+                "position":"absolute",
+                "left":+left+"px",
+                "top":+top+"px",
+                "width":+width+"px",
+                "height":+height+"px",
+                "border-radius":radius,
+                "background":"rgb("+red+","+green+","+blue+")"
+            });
+            self.append(div);
+           
+        });
+        $(document).on("scroll", function(e){
+            console.log(e);
+            var body = $(this);
+            var red = Math.floor(Math.random() * 255);
+            var green = Math.floor(Math.random() * 255);
+            var blue = Math.floor(Math.random() * 255);
+        
+            $("body").css({
+                "background-color":"rgb("+red+","+green+","+blue+")"
+            });
+            
+        });
+
+        var myObj = {
+            "key":"this is the value"
+        };
+
+        console.log(myObj);
+        console.log(myObj["key"]);
+    </script>
+</html>
