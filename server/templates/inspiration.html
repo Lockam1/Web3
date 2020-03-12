@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/css.css') }}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <script src="java.js"></script>
+
+    <title>Bootstrap</title>
+  </head>
+  <body class = "bg-light" >
+    <div class = "container">
+        <nav class="navbar navbar-expand-lg navbar-light ">
+            <a class="navbar-brand text-light" href="#">Anthony Lock</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                <li class="nav-item ">
+                    <a class="nav-link text-light" href="{{ url_for('index') }}">Home </a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link text-light" href="{{ url_for('inspiration') }}">Inspiration <span class="sr-only">(current)</span></a>
+                </li>                    
+            </div>
+        </nav>
+
+        <div class = "container mt-4">
+            <h1 class = "display-2 text-light text-center mt-4">My Inspiration</h1>
+
+            <div class = "row mt-4">
+                <div class = "col-md mr-1">
+                    <div class="card" >
+                        <img src="/static/images/K2.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                        <h3 class="card-text text-center text-light">K2 Skis</h3>
+                        <a href="https://k2snow.com/en-nz"><p class = "text-center text-light">k2snow.com</p></a>
+                        <p class = "text-center text-light">Clean and simple webpage. Very mininimal amount of links which then take you to all the different areas within the company. When Viewing this page there is a video which is playing in the background</p> 
+                        </div>
+                    </div>
+                </div>
+                <div class = "col-md mr-1">
+                    <div class="card" >
+                        <img src="/static/images/Trek.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h3 class="card-text text-center text-light">Trek Bikes</h3>
+                            <a href="https://www.trekbikes.com/"><p class = "text-center text-light">trekbikes.com</p></a>
+                            <p class = "text-center text-light">The landing page of this site is very simple and contains a navigation with only necerssary links, and large high quality background image and the company slogan.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class = "row mt-2">
+                <div class = "col-md mr-1">
+                    <div class="card" >
+                        <img src="/static/images/NS.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h3 class="card-text text-center text-light">New Schoolers</h3>
+                            <a href="https://www.newschoolers.com/"><p class = "text-center text-light">newschoolers.com</p></a>
+                            <p class = "text-center text-light">This website is a page I fequently use because of the functionality it holds. It is a site dedicated to skiing media and no other crap. The design hasnt changed much over the years because they have found a formula which works for the content there are trying to display.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class = "col-md mr-1">
+                    <div class="card" >
+                        <img src="/static/images/spec.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h3 class="card-text text-center text-light">Specialized Bikes</h3>
+                            <a href="https://www.specialized.com/"><p class = "text-center text-light">specialized.com</p></a>
+                            <p class = "text-center text-light">Landing page of this site is a very clean straight forward design. It dose have to 'mordern' characteristic's of a website, but then jumps straight to content being barly visable at the bottom making you aware there is more to find with clicking a button.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+  </body>
+</html>
