@@ -19,7 +19,7 @@ def index():
     Country(name='New Zealand', population='5 million').save()
     return render_template("index.html")
 
-@app.routes('/countries')
+@app.route('/countries')
 def getCountries():
     countries = Country.objects
     return countries.to_json()
