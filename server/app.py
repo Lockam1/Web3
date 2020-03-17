@@ -17,6 +17,7 @@ class Country(Document):
 @app.route('/index')
 def index():
     Country(name='New Zealand', population='5 million').save()
+    Country(name='Australia', population='36 million').save()
     return render_template("index.html")
 
 @app.route('/countries')
