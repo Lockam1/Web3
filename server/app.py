@@ -25,16 +25,16 @@ def getCountries():
     countries = Country.objects
     return countries.to_json()
 
+@app.route('/countries/<country_name>', methods=['GET'])
+def getCountryById(country_name):
+    countries = Country.objects.get(name=country_name)
+    return users.to_json()
+
 
 @app.route("/inspiration")
 def inspiration():
     return render_template("inspiration.html")
 
-
-@app.route("/testCountry")
-def listCountryTest():
-    
-    return Country.objects.to_json()
   
 
 if __name__ =="__main__":
