@@ -28,7 +28,7 @@ def getCountries():
 @app.route('/countries/<country_name>', methods=['GET'])
 def getCountryById(country_name):
     countries = Country.objects(name=country_name)[0]
-    return users.to_json()
+    return countries.to_json()
 
 
 @app.route("/inspiration")
