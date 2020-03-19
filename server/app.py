@@ -22,6 +22,13 @@ class Country(Document):
 def index():
     # Country(name='New Zealand', population='5 million').save() Example adding to a db from here.
     # Country(name='Australia', population='36 million').save()
+   
+    
+
+    return render_template("index.html")
+
+@app.route('/data')
+def showData():
     for file in os.listdir(app.config['FILES_FOLDER']):
         filename = os.fsdecode(file)
         path = os.path.join(app.config['FILES_FOLDER'],filename)
@@ -30,9 +37,8 @@ def index():
         d = list(r)
         for data in d:
             print(data)
-    
+        return data.to_json() 
 
-    return render_template("index.html")
 
 @app.route('/countries')
 def getCountries():
