@@ -22,9 +22,6 @@ class Country(Document):
 def index():
     # Country(name='New Zealand', population='5 million').save() Example adding to a db from here.
     # Country(name='Australia', population='36 million').save()
-   
-    
-
     return render_template("index.html")
 
 @app.route('/data')
@@ -36,9 +33,8 @@ def showData():
         r = csv.reader(f)
         d = list(r)
         for data in d:
-            print(data)
-        return data.to_json() 
-
+            print(d)
+    return render_template("index.html")
 
 @app.route('/countries')
 def getCountries():
