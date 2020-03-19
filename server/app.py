@@ -26,15 +26,15 @@ def index():
 
 @app.route('/data')
 def showData():
+    temp = []
     for file in os.listdir(app.config['FILES_FOLDER']):
         filename = os.fsdecode(file)
         path = os.path.join(app.config['FILES_FOLDER'],filename)
         f = open(path)
         r = csv.reader(f)
         d = list(r)
-        for data in d:
-            print(d)
-    return render_template("index.html")
+        temp.append(d)
+    return render_template("index.html", value=temp)
 
 @app.route('/countries')
 def getCountries():
