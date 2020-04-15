@@ -1,6 +1,6 @@
 $(function(){
 	$('button').click(function(){
-        $('#ajax').remove();
+        $("div[id='ajax']").remove();
     
     });
 });
