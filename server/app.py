@@ -22,7 +22,7 @@ app.config.from_object('config')
 def index():
     # Country(name='New Zealand', population='5 million').save() Example adding to a db from here.
     # Country(name='Australia', population='36 million').save()
-    return render_template("index.html")
+    return render_template("index.html"), 200
 
 @app.route('/data')
 def showData():
@@ -34,7 +34,7 @@ def showData():
         r = csv.reader(f)
         d = list(r)
         temp.append(d)
-    return render_template("index.html", value=temp)
+    return render_template("index.html", value=temp), 200
 
 @app.route('/countries')
 def getCountries():
@@ -47,9 +47,14 @@ def getCountryById(country_name):
     return countries.to_json()
 
 
-@app.route("/inspiration")
+@app.route('/inspiration')
 def inspiration():
-    return render_template("inspiration.html")
+    return render_template("inspiration.html"), 200
+
+@app.route('/ajax')
+def inspiration():
+    return render_template("ajax.html"), 200
+
 
   
 
