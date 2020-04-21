@@ -52,7 +52,7 @@ def inspiration():
     return render_template("inspiration.html"), 200
 
 @app.route('/ajax')
-def inspiration():
+def ajax():
     return render_template("ajax.html"), 200
 
 
