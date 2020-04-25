@@ -2,7 +2,16 @@ $(function(){
 	$('button').click(function(){  //fuction trigger by success '200' code
         alert('clicked');
         $("div[id='ajax']").remove();
-        d3.select("body").append("p");
+ 
+        var svgSelection = bodySelection.append("svg")
+            .attr("width", 50)
+            .attr("height", 50);
+        
+        var circleSelection = svgSelection.append("circle")
+            .attr("cx", 25)
+            .attr("cy", 25)
+            .attr("r", 25)
+            .style("fill", "purple");
     
     }).fail(function(){   //function trigger by fail '400', '500' code
 
