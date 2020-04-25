@@ -2,11 +2,11 @@ $(function(){
 	$('button').click(function(){  //fuction trigger by success '200' code
         alert('clicked');
         $("div[id='ajax']").remove();
- 
+
+        var bodySelection = d3.select("body");
         var svgSelection = bodySelection.append("svg")
             .attr("width", 50)
             .attr("height", 50);
-        
         var circleSelection = svgSelection.append("circle")
             .attr("cx", 25)
             .attr("cy", 25)
