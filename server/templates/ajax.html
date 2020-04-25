@@ -50,17 +50,7 @@
                 <button class="btn btn-lg btn-primary btn-block" type="button">Run Ajax</button>
               </form>   
             </div> 
-            var circle = svg.selectAll("circle")
-              .data(data);
-
-            circle.exit().remove();
-
-            circle.attr("r", 1.5);
-
-            circle.enter().append("circle")
-                .attr("r", 2.5)
-              .merge(circle)
-                .attr("cx", function(d) { return d.x; })
+            
 
         </div>
     </div>
