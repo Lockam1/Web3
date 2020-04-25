@@ -66,7 +66,7 @@
 
               var svg = d3.select("body").append("svg");
 
-              svg.attr("width", 800).attr("height", 600);
+              svg.attr("width", 1500).attr("height", 800);
 
               var circles = svg.selectAll("circle")
                   .data(data)
@@ -96,7 +96,7 @@
                   clicked = false; 
                   var destination = -1;
                 }
-              circles.transition().duration(1500)
+              circles.transition().duration(2000)
                   .attr("cx", (300 * destination) + 350);
               };
             </script>
