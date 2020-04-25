@@ -61,11 +61,11 @@
             
 
             <script>
-              var spaceCircles = [30, 70, 110];
+              var spaceCircles = [340, 570, 1010];
               
               var svgContainer = d3.select("body").append("svg")
-                .attr("width", 200)
-                .attr("height", 200);
+                .attr("width", 2000)
+                .attr("height", 1500);
 
               var circles = svgContainer.selectAll("circle")
                 .data(spaceCircles)
@@ -78,9 +78,9 @@
                 .attr("r", 20 )
                 .style("fill", function(d) {
                 var returnColor;
-                if (d === 30) { returnColor = "green";
-                } else if (d === 70) { returnColor = "purple";
-                } else if (d === 110) { returnColor = "red"; }
+                if (d === 340) { returnColor = "green";
+                } else if (d === 570) { returnColor = "purple";
+                } else if (d === 1010) { returnColor = "red"; }
                 return returnColor;
                });
             </script>
