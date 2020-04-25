@@ -59,46 +59,58 @@
             </svg>
 
             <script>
-              var data = [];
-              for (var i=0; i < 3; i++) {
-              data.push(Math.random()*10)
-              };
+             var jsonCircles = [
+                { "id": 2, "x_axis": 35.5, "y_axis": 70.5, "radius": 35.5, "color" : "#FCD233" },
+                { "id": 1, "x_axis": 232.5, "y_axis": 116.5, "radius": 45.5, "color" : "#9FE94F"},
+                { "id": 0, "x_axis": 137.5, "y_axis": 17.5, "radius": 17.5, "color" : "#007084"}];
 
-              var svg = d3.select("body").append("svg");
+              var max_x = 0;
+              var max_y = 0;
 
-              svg.attr("width", 1500).attr("height", 800);
+              for (var i = 0; i < jsonCircles.length; i++) {
+                var temp_x, temp_y;
+                var temp_x = jsonCircles[i].x_axis + jsonCircles[i].radius;
+                var temp_y = jsonCircles[i].y_axis + jsonCircles[i].radius;
 
-              var circles = svg.selectAll("circle")
-                  .data(data)
-                  .enter()
-                  .append("circle")
-                  .attr("cx", 60)
-                  .attr("cy", function (d, i) {
-                    return i * 100 + 40;
+                if ( temp_x >= max_x ) { max_x = temp_x + 200; }
+
+                if ( temp_y >= max_y ) { max_y = temp_y + 200; }
+              }
+
+              var svgContainer = d3.select("body").append("svg")
+                .attr("width", max_x)
+                .attr("height", max_y)
+
+              var circles = svgContainer.selectAll("circle")
+                .data(jsonCircles)
+                .enter()
+                .append("circle");
+
+              var circleAttributes = circles
+                .attr("cx", function (d) { return d.x_axis; })
+                .attr("cy", function (d) { return d.y_axis; })
+                .attr("r", function (d) { return d.radius; })
+                .style("fill", function(d) { return d.color; })
+                .on("click", function(d) {
+                    circles
+                    .interrupt()
+                    .transition()
+                    .duration(1500)
+                    .attr("cx", function(d) {
+                      var returncx;
+                      if (d.id == 0) { returncx = d.x_axis-30;
+                      } else if (d.id >= 0) { returncx = d.x_axis+50;};
+                    return d3.select(this).attr("cx") == d.x_axis ? returncx : d.x_axis;
                   })
-                  .attr("r", 40)
-                  .attr("fill", function (d) {
-                    return d.colour;
-                  });
-
-              // for the event handler
-              // test adapted from https://bl.ocks.org/milkbread/5792150
-              circles.on("mousedown",moveCircles);
-
-              var clicked = false;
-
-              function moveCircles() { // give the circles a boolean value
-                if (clicked == false) { 
-                  clicked = true; 
-                  var destination = 1;
-                }
-                else { 
-                  clicked = false; 
-                  var destination = -1;
-                }
-              circles.transition().duration(2000)
-                  .attr("cx", (500 * destination) + 650);
-              };
+                    .attr("cy", function(d) {
+                    var returncy;
+                    if (d.id == 0) { returncy = d.y_axis+200;
+                    } else if (d.id >= 0) { returncy = d.y_axis-20;};
+                    return d3.select(this).attr("cy") == d.y_axis ? returncy : d.y_axis;
+                        })
+                  .attr("r", function (d) { return d.radius; })
+                  .style("fill", function(d) { return d.color; });
+                })
             </script>
 
         </div>
