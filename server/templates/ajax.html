@@ -14,6 +14,8 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
     <script src="java.js"></script>
     <script src="static/js/app.js"></script>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
 
     <title>Bootstrap</title>
   </head>
@@ -43,11 +45,22 @@
             <h1 class = "display-2 text-light text-center mt-4">Ajax and D3 fucntionality</h1>
 
 
-            <div class="container" id ="ajax">
-                <form class="form"  role="form">
-                  <button class="btn btn-lg btn-primary btn-block" type="button">Run Ajax</button>
-                </form>   
-              </div> 
+            <div class="container mt-4" id ="ajax">
+              <form class="form"  role="form">
+                <button class="btn btn-lg btn-primary btn-block" type="button">Run Ajax</button>
+              </form>   
+            </div> 
+            var circle = svg.selectAll("circle")
+              .data(data);
+
+            circle.exit().remove();
+
+            circle.attr("r", 1.5);
+
+            circle.enter().append("circle")
+                .attr("r", 2.5)
+              .merge(circle)
+                .attr("cx", function(d) { return d.x; })
 
         </div>
     </div>
