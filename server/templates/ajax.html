@@ -58,60 +58,12 @@
               <circle cx="80" cy="60" r="30" style="fill:steelblue;"></circle>
               <circle cx="120" cy="60" r="30" style="fill:steelblue;"></circle>
             </svg> -->
+            
 
             <script>
-             var jsonCircles = [
-                { "id": 2, "x_axis": 35.5, "y_axis": 70.5, "radius": 35.5, "color" : "#FCD233" },
-                { "id": 1, "x_axis": 232.5, "y_axis": 116.5, "radius": 45.5, "color" : "#9FE94F"},
-                { "id": 0, "x_axis": 137.5, "y_axis": 17.5, "radius": 17.5, "color" : "#007084"}];
-
-              var max_x = 0;
-              var max_y = 0;
-
-              for (var i = 0; i < jsonCircles.length; i++) {
-                var temp_x, temp_y;
-                var temp_x = jsonCircles[i].x_axis + jsonCircles[i].radius;
-                var temp_y = jsonCircles[i].y_axis + jsonCircles[i].radius;
-
-                if ( temp_x >= max_x ) { max_x = temp_x + 200; }
-
-                if ( temp_y >= max_y ) { max_y = temp_y + 200; }
-              }
-
-              var svgContainer = d3.select("body").append("svg")
-                .attr("width", max_x)
-                .attr("height", max_y)
-
-              var circles = svgContainer.selectAll("circle")
-                .data(jsonCircles)
-                .enter()
-                .append("circle");
-
-              var circleAttributes = circles
-                .attr("cx", function (d) { return d.x_axis; })
-                .attr("cy", function (d) { return d.y_axis; })
-                .attr("r", function (d) { return d.radius; })
-                .style("fill", function(d) { return d.color; })
-                .on("click", function(d) {
-                    circles
-                    .interrupt()
-                    .transition()
-                    .duration(1500)
-                    .attr("cx", function(d) {
-                      var returncx;
-                      if (d.id == 0) { returncx = d.x_axis-30;
-                      } else if (d.id >= 0) { returncx = d.x_axis+50;};
-                      return d3.select(this).attr("cx") == d.x_axis ? returncx : d.x_axis;
-                    })
-                    .attr("cy", function(d) {
-                    var returncy;
-                    if (d.id == 0) { returncy = d.y_axis+200;
-                    } else if (d.id >= 0) { returncy = d.y_axis-20;};
-                    return d3.select(this).attr("cy") == d.y_axis ? returncy : d.y_axis;
-                        })
-                  .attr("r", function (d) { return d.radius; })
-                  .style("fill", function(d) { return d.color; });
-                  })
+              d3.select("body").append("svg").attr("width", 50).attr("height", 50).append("circle").attr("cx", 25).attr("cy", 25).attr("r", 25).style("fill", "purple");
+              d3.select("body").append("svg").attr("width", 50).attr("height", 50).append("circle").attr("cx", 75).attr("cy", 75).attr("r", 25).style("fill", "red");
+              d3.select("body").append("svg").attr("width", 50).attr("height", 50).append("circle").attr("cx", 125).attr("cy", 125).attr("r", 25).style("fill", "blue");
             </script>
 
         </div>
