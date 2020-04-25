@@ -3,7 +3,8 @@ d3.select("p").style("color", "green")
 // d3.select("body").transition()
     
 
-values = Array(5) [1, 3, -4, 2, 4]
+var circle = d3.selectAll("circle");
 
-import {chart as chart1} from "@ds/histogram" 
-
+circle.style("fill", "steelblue");
+circle.attr("r", 30);
+circle.attr("cx", function() { return Math.random() * 720; });
