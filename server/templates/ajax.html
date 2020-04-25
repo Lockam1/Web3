@@ -72,11 +72,11 @@
                   .data(data)
                   .enter()
                   .append("circle")
-                  .attr("cx", 100)
+                  .attr("cx", 60)
                   .attr("cy", function (d, i) {
-                    return i * 100 + 60;
+                    return i * 100 + 40;
                   })
-                  .attr("r", 60)
+                  .attr("r", 40)
                   .attr("fill", function (d) {
                     return d.colour;
                   });
@@ -97,7 +97,7 @@
                   var destination = -1;
                 }
               circles.transition().duration(2000)
-                  .attr("cx", (300 * destination) + 450);
+                  .attr("cx", (500 * destination) + 450);
               };
             </script>
 
