@@ -9,9 +9,10 @@ app = Flask(__name__)
 
 app.config.from_object('config')
 
-class Country(Document):  Setting up fields needed for the database additions
-#     name = StringField()
-#     population = StringField()
+class Country(Document):  #Setting up fields needed for the database additions
+     name = StringField()
+     population = StringField()
+     language = StringField()
     
 
 
