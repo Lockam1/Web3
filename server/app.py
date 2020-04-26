@@ -3,7 +3,7 @@ from mongoengine import *
 import os
 import csv
 
-connect('countries')
+connect('Web3')
 
 app = Flask(__name__)
 
