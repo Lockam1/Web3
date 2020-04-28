@@ -61,6 +61,10 @@
             
 
             <script>
+              var responseObj = JSON.parse(response);
+                console.log(response);
+                console.log(responseObj);
+
               var spaceCircles = [300, 900, 1500];
               
               var svgContainer = d3.select("body").append("svg")
