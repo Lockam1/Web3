@@ -24,6 +24,8 @@ def index():
     
     return render_template("index.html"), 200
 
+
+#Route with reading csv file set up
 @app.route('/data')
 def showData():
     temp = []
