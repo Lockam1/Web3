@@ -21,8 +21,7 @@ class Country(Document):  #Setting up fields needed for the database additions
 @app.route('/home')
 @app.route('/index')
 def index():
-    # Country(name='New Zealand', population='5 million').save() Example adding to a db from here.
-    # Country(name='Australia', population='36 million').save()
+    
     return render_template("index.html"), 200
 
 @app.route('/data')
@@ -36,6 +35,13 @@ def showData():
         d = list(r)
         temp.append(d)
     return render_template("index.html", value=temp), 200
+
+#Temporary route for populating countries database
+@app.route('/popCountry')
+def index():
+    #Hard coded adding to database
+    Country(name='New Zealand', population='5 million', language='English').save() 
+    Country(name='Australia', population='36 million', language='English').save()
 
 @app.route('/countries')
 def getCountries():
