@@ -1,5 +1,6 @@
 //Ajax code here
 
+
 $(function(){
 	$('button').click(function(){  //fuction trigger by success '200' code
         alert('clicked');
