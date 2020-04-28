@@ -42,8 +42,8 @@ def index():
     #Hard coded adding to database
     Country(name='New Zealand', population='5 million', language='English').save() 
     Country(name='Australia', population='36 million', language='English').save()
-     return render_template("index.html"), 200
-     
+    return render_template("index.html"), 200
+
 @app.route('/countries')
 def getCountries():
     countries = Country.objects
