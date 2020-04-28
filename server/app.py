@@ -38,7 +38,7 @@ def showData():
 
 #Temporary route for populating countries database
 @app.route('/popCountry')
-def index():
+def popCountry():
     #Hard coded adding to database
     Country(name='New Zealand', population='5 million', language='English').save() 
     Country(name='Australia', population='36 million', language='English').save()
