@@ -46,6 +46,7 @@ def popCountry():
     Country(name='Australia', population='36 million', language='English').save()
     return render_template("index.html"), 200
 
+#Route for testing database contents
 @app.route('/countries')
 def getCountries():
     countries = Country.objects
@@ -63,6 +64,7 @@ def inspiration():
 
 @app.route('/ajax')
 def ajax():
+    countries = Country.objects
     return render_template("ajax.html"), 200
  
 
