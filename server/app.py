@@ -65,7 +65,7 @@ def inspiration():
 @app.route('/ajax')
 def ajax():
     countries = Country.objects
-    return render_template("ajax.html"), 200
+    return render_template("ajax.html", value=countries), 200
  
 
   
