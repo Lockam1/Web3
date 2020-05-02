@@ -39,7 +39,7 @@ def showData():
     return render_template("index.html", value=temp), 200
 
 @app.route('/csvtodb')
-def csvtodb()
+def csvtodb():
     for file in os.listdir(app.config['FILES_FOLDER']):
         filename = os.fsdecode(file)
         path = os.path.join(app.config['FILES_FOLDER'],filename)
