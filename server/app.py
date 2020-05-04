@@ -9,10 +9,9 @@ app = Flask(__name__)
 
 app.config.from_object('config')
 
-class Country(Document):  #Setting up fields needed for the database additions
-     name = StringField()
-     population = StringField()
-     language = StringField()
+class Country(Document):  #Setting up fields needed for the database additions  
+    name = StringField()
+    data = DictField()
     
 
 
@@ -51,12 +50,13 @@ def csvtodb():
             dict = {} # a blank placeholder data dict
             for key in data: # iterate through the header keys
                 if key == "country":
-                    # check if this country already exists in the db
-                    
-                    # if the country does not exist, we can use the new blank country we created above, and set the name
- 
-                    # if the country already exists, replace the blank country with the existing country from the db, and replace the blank dict with the current country's 
-                    # data                
+                    if data.country not in d: #Checking if the country name is already in the database
+                        country.name = data.country # If the name wasnt it adds it here?
+                    else if data.country in d:
+                        country = Country
+                        
+                        # if the country already exists, replace the blank country with the existing country from the db, and replace the blank dict with the current country's 
+                        # data                
                 else:
                     f = filename.replace(".csv","") # we want to trim off the ".csv" as we can't save anything with a "." as a mongodb field name
                     if f in dict: # check if this filename is already a field in the dict
@@ -65,8 +65,9 @@ def csvtodb():
                         dict[f] = {key:data[key]} # if it is not, create a new object and assign it to the dict
 
                 # add the data dict to the country
-
+                country.data = dict[f]
             # save the country
+            Country.save()
 
 #Temporary route for populating countries database
 @app.route('/popCountry')
