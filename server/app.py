@@ -52,7 +52,7 @@ def csvtodb():
                 if key == "country":
                     if data.country not in d: #Checking if the country name is already in the database
                         country.name = data.country # If the name wasnt it adds it here?
-                    else if data.country in d:
+                    elif data.country in d:
                         country = Country
                         
                         # if the country already exists, replace the blank country with the existing country from the db, and replace the blank dict with the current country's 
