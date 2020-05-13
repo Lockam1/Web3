@@ -1,4 +1,4 @@
-d3.select("p").style("color", "green")
+
 
 // d3.select("body").transition()
     
