@@ -54,19 +54,18 @@
             <button class="btn btn-lg btn-primary btn-block" id = "vis" type="button">Load graph</button>
           </form> -->        
           <!-- Drop down menu for selecting the csv file you wish to view. -->
-          <!-- <div class="btn-group">
-            <button class="btn btn-secondary btn-sm" type="button">
-              Select File To View:
+          <div class="dropdown">
+            <button type="button" class="btn btn-secondary dropdown-toggle mt-4 float-right" data-toggle="dropdown">
+              Please select a dataset to view:
             </button>
-            <button type="button" class="btn btn-sm btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <span class="sr-only">Toggle Dropdown</span>
-            </button>-->
-            <div class="text-center">
-              <button id = "vis1" onclick="dataForCsv1()" class="btn btn-secondary btn-sm">File 1</button>
-              <button id = "vis2" onclick="dataForCsv2()" class="btn btn-secondary btn-sm">File 2</button>
-              <button id = "vis3" onclick="dataForCsv3()" class="btn btn-secondary btn-sm">File 3</button>
+            <div class="dropdown-menu">
+              <div class="text-center">
+                <button id = "vis1" onclick="dataForCsv1()" class="dropdown-item btn btn-secondary btn-sm">Forced participation rate percentage:</button>
+                <button id = "vis2" onclick="dataForCsv2()" class="dropdown-item btn btn-secondary btn-sm">Income per-person, per-capita:</button>
+                <button id = "vis3" onclick="dataForCsv3()" class="dropdown-item btn btn-secondary btn-sm">Average life expectancy:</button>
+              </div>
             </div>
-          <!-- </div> -->
+          </div>
         
           <!-- Svg tag used for D3 elements, populated when D3 is ran -->
           <svg class = "graph mt-2">

@@ -108,52 +108,12 @@ function graph(){
     $("svg").empty();
     //var g = d3.select("svg").selectAll("g").data(csvFile3);
     
-   
-   
-    // var xscale = d3.scaleLinear()
-    //         .domain([0, 1100])
-    //         .range([0, 1100]);
-    
-    // var yscale = d3.scaleLinear()
-    //     .domain([0, 500])
-    //     .range([500, 0]);
-
-    // var x_axis = d3.axisBottom().scale(xscale);
-    
-    // var y_axis = d3.axisLeft().scale(yscale);
-    
-    // d3.select("svg").append("g")
-    //     .attr("transform", "translate(50, 10)")
-    //     .call(y_axis);
-    
-    // var xAxisTranslate = 500/2 + 10;
-    
-    // d3.select("svg").append("g")
-    //     .attr("transform", "translate(50, " + xAxisTranslate  +")")
-    //     .call(x_axis)
-    // var temp = 0;
-
-    // var y = d3.scaleLinear()
-    //     .domain([d3.min(csvFile1[1].data), d3.max(csvFile1[1].data)])  // This is what is written on the Axis: from 0 to 100
-    //     .range([600, 0]); 
-    
-    // d3.select("svg").append("g")
-        
-    //     .call(d3.axisLeft(y))
-
-    // var x = d3.scaleLinear()
-    //     .domain([d3.min(csvFile1[1].data), d3.max(csvFile1[1].data)])  // This is what is written on the Axis: from 0 to 100
-    //     .range([0, 1100]); 
-    
-    // d3.select("svg").append("g")
-    //     .attr("transform", "translate(0,50)")
-    //     .call(d3.axisBottom(x))
 
     //call item from a point in an array !!
     var arrLength = csvFile1.length; //Getting the length of the array
     
     console.log(csvFile1[0].name);    
-    console.log(cs7); //??? this just calls the whole dict accioated with the country
+    console.log(csvFile1[0].data.aged_25_54_labour_force_participation_rate_percent["1990"]); //??? this just calls the whole dict accioated with the country
     console.log(csvFile1[1].name); //is there a way of getting just one item from dict?
     console.log(csvFile1[1].data);  //Like this
 
@@ -169,11 +129,18 @@ function graph(){
     });
 
     // add a circle to each 'g'
+    //if slider is 'year' do \/
+    //getElementById 'year'
     var circle = en.append("circle")
-        .attr("r",function(d,i){ return csvFile1[i].data.aged_25_54_labour_force_participation_rate_percent["1990"]/4})
+        .attr("r",function(d,i){ 
+            return csvFile1[i].data.aged_25_54_labour_force_participation_rate_percent["1990"]/4
+        })
         .attr("fill",function(d,i){ return i % 2 == 0 ? "red" : "blue" });
 
     // add a text to each 'g'
     en.append("text").text(function(d){ return d.name });
-       
+
 };
+   
+       
+
