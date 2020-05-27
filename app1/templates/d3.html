@@ -15,6 +15,8 @@
     
     
     <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+
 
 
     <title>Bootstrap</title>
@@ -46,32 +48,33 @@
 
         <!-- <div class = "containerMain mt-4"> -->
           <h1 class = "display-2 text-light text-center mt-4">Presentations thanks to D3!</h1>    
+
           <!-- <form class="form"  role="form">
             Button which will activate ajax call and run the D3 
             <button class="btn btn-lg btn-primary btn-block" id = "vis" type="button">Load graph</button>
           </form> -->        
           <!-- Drop down menu for selecting the csv file you wish to view. -->
-          <div class="btn-group">
+          <!-- <div class="btn-group">
             <button class="btn btn-secondary btn-sm" type="button">
               Select File To View:
             </button>
             <button type="button" class="btn btn-sm btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <span class="sr-only">Toggle Dropdown</span>
-            </button>
-            <div class="dropdown-menu">
-              <button id = "vis1" class="dropdown-item" type="button">File 1</button>
-              <button id = "vis2" class="dropdown-item" type="button">File 2</button>
-              <button id = "vis3" class="dropdown-item" type="button">File 3</button>
+            </button>-->
+            <div class="text-center">
+              <button id = "vis1" onclick="dataForCsv1()" class="btn btn-secondary btn-sm">File 1</button>
+              <button id = "vis2" onclick="dataForCsv2()" class="btn btn-secondary btn-sm">File 2</button>
+              <button id = "vis3" onclick="dataForCsv3()" class="btn btn-secondary btn-sm">File 3</button>
             </div>
-          </div>
+          <!-- </div> -->
         
           <!-- Svg tag used for D3 elements, populated when D3 is ran -->
           <svg class = "graph mt-2">
-
+            
           </svg>
         <!-- </div> -->
     </div>
-    <script src="/static/js/d3.js"></script> <!-- This is here because the html needs to be genorated befor it can run -->
+    
     <script src="/static/js/app.js"></script>
     
   </body>
