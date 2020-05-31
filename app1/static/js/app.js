@@ -34,6 +34,44 @@ function dataForCsv3(){
 };
 
 
+function drawGraph(){
+    $("svg").empty();
+    //var g = d3.select("svg").selectAll("g").data(csvFile3);
+    //Creating the axis
+    var width = 1100, height = 1100;
+
+    var data = [10, 15, 20, 25, 30];
+    var svg = d3.select("#svg")
+        .append("svg")
+        .attr("id", "axis")
+        .attr("width", width)
+        .attr("height", height);
+       
+
+    var xscale = d3.scaleLinear()
+        .domain([0, 100])
+        .range([0, width - 100]);
+
+    var yscale = d3.scaleLinear()
+            .domain([0, 100])
+            .range([height/2, 0]);
+
+    var x_axis = d3.axisBottom()
+            .scale(xscale);
+
+    var y_axis = d3.axisLeft()
+            .scale(yscale);
+
+    svg.append("g")
+        .attr("transform", "translate(50, 10)")
+        .call(y_axis)
+
+    var xAxisTranslate = height/2 + 10;
+
+    svg.append("g")
+        .attr("transform", "translate(50, " + xAxisTranslate  +")")
+        .call(x_axis)
+}
 
 //Functions for displaying the data for the three files.
 function showFile1(){
@@ -100,32 +138,28 @@ function showFile3(){
 };
 
 function graph(){
-    // I need to seperate the columns so it knows which year is acioated with witch data entry
-    // loop through each year as a array item like a slider or a picker so you can go through different years
-    // from 2 up so it skips the country name '[2], [3], [4], ...' and so on.
-    // then do some thing with the data now accesable  (Graph it)
-    // if array item number equals variable set to array item number do code then incriment if slider moves again
-    $("svg").empty();
-    //var g = d3.select("svg").selectAll("g").data(csvFile3);
-    
-
+    drawGraph();
     //call item from a point in an array !!
-    var arrLength = csvFile1.length; //Getting the length of the array
+    //var arrLength = csvFile1.length; //Getting the length of the array
     
-    console.log(csvFile1[0].name);    
-    console.log(csvFile1[0].data.aged_25_54_labour_force_participation_rate_percent["1990"]); //??? this just calls the whole dict accioated with the country
-    console.log(csvFile1[1].name); //is there a way of getting just one item from dict?
-    console.log(csvFile1[1].data);  //Like this
+    // console.log(csvFile1[0].name);    
+    // console.log(csvFile1[0].data.aged_25_54_labour_force_participation_rate_percent["1990"]); //??? this just calls the whole dict accioated with the country
+    // console.log(csvFile1[1].name); //is there a way of getting just one item from dict?
+    // console.log(csvFile1[1].data);  //Like this
 
 
     // var temp = csvFile1[i].data.aged_25_54_labour_force_participation_rate_percent["1990"];
     // console.log(temp);
-    var g = d3.select("svg").selectAll("g").data(csvFile1);
-
+    var g = d3.select("#axis").append("svg").attr("id", "data").selectAll("g").data(csvFile1)
+        .attr("padding-left", "40");
+    var x = 0;
+    var drawX;
     // create new 'g' elements for each country
     var en = g.enter().append("g")
-        .attr("transform",function(d){ 
-        return "translate("+ (Math.random() * 1100) + 40 + "," + (Math.random() * 600) + 40 +")" 
+        .attr("transform",function(d, i){ 
+        x = csvFile1[i].data.aged_25_54_labour_force_participation_rate_percent["1990"];
+        drawX = x * 5;
+        return "translate("+ (drawX) + 100 + "," + (600 - csvFile1[i].data.aged_25_54_labour_force_participation_rate_percent["1990"]) + 40 +")" 
     });
 
     // add a circle to each 'g'
@@ -133,13 +167,15 @@ function graph(){
     //getElementById 'year'
     var circle = en.append("circle")
         .attr("r",function(d,i){ 
-            return csvFile1[i].data.aged_25_54_labour_force_participation_rate_percent["1990"]/4
+            return csvFile1[i].data.aged_25_54_labour_force_participation_rate_percent["1990"]/5
         })
         .attr("fill",function(d,i){ return i % 2 == 0 ? "red" : "blue" });
 
     // add a text to each 'g'
     en.append("text").text(function(d){ return d.name });
 
+    //Testing axis 
+    
 };
    
        
