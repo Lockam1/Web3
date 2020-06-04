@@ -15,6 +15,8 @@
     
     
     <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.4/lodash.min.js"></script>
+    <script src="https://unpkg.com/d3-simple-slider@0.1.2/build/d3-simple-slider.js"></script>
     <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
 
 
@@ -66,10 +68,11 @@
               </div>
             </div>
           </div>
-        
+                
           <!-- Svg tag used for D3 elements, populated when D3 is ran -->
-          <svg id = "svg"class = "graph mt-2">
-            
+          <svg id="svg" class = "graph mt-2">
+            <p class="text-white">Year:<p class="text-white" id="value"></p></p>
+            <div class="text-white" id="value"></div>
           </svg>
         <!-- </div> -->
     </div>
