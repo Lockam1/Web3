@@ -1,4 +1,5 @@
 from flask import Flask, render_template, url_for, request, json
+from flask_cors import CORS
 from mongoengine import *
 import os
 import csv
@@ -6,6 +7,7 @@ import csv
 #DB set up
 connect('Web3')
 app = Flask(__name__)
+CORS(app)
 app.config.from_object('config')
 
 class Csv1(Document):  #Setting up fields needed for the database additions  

@@ -1,8 +1,16 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to my website using Node JS for the Second Stack
+  h1 Please select a counrty:
+  p Drop down slection here
+  h2 Country Name:
+  h2 Data Number 2020:
+  h3 Update Country:
+  form(method='POST' action='/updateCountry')
+          div.form-group
+            label(for='name') Name:
+            input#name.form-control(type='text', placeholder='Country Name' name='name')
+          button.btn.btn-primary(type='submit') Update
   div(id ="like_button_container")
 
   script(src="https://unpkg.com/react@16/umd/react.development.js" crossorigin)
