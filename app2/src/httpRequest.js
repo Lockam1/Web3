@@ -1,6 +1,6 @@
-const https = require('https');
+const https = require('http');
 
-_EXTERNAL_URL = 'https://192.168.1.155/csv2';
+_EXTERNAL_URL = 'http://192.168.1.156:80/csv2';
 
 const callExternalAPIHttp = (callback) => {
     https.get(_EXTERNAL_URL, (resp) => {
@@ -10,8 +10,9 @@ const callExternalAPIHttp = (callback) => {
             data += chunk;
         });
         resp.on('end', () => {
+            console.log(data);
             return callback(data);
-            //console.log(JSON.stringify(data));
+           
         });
 
     }).on("error", (err) => {

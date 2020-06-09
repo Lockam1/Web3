@@ -3,7 +3,15 @@
 var csvFile1;
 var csvFile2;
 var csvFile3;
-var year; //Variable contain the slider year data
+var year; //Variable to contain the slider year data
+var xAxisMax;
+var yAxisMax;
+var file1Data;
+var file2Data;
+var file3Data;
+
+var file; //Gets over written on button click.
+var fileName;  //Gets over written on button click with the file name.
 
 //$(document).ready(function(){
 //      $('#vis1').onClick(dataForCsv1());
@@ -17,36 +25,38 @@ var year; //Variable contain the slider year data
 function dataForCsv1(){
     $.get('/csv1', function(response){
         csvFile1 = JSON.parse(response);
+        file = csvFile1;
+        fileName = "aged_25_54_labour_force_participation_rate_percent";
         graph();
     });
 };
 function dataForCsv2(){
     $.get('/csv2', function(response){
         csvFile2 = JSON.parse(response);
+        file = csvFile2;
+        fileName = "income_per_person_gdppercapita_ppp_inflation_adjusted";
         showFile2();
     });
 };
 function dataForCsv3(){
     $.get('/csv3', function(response){
         csvFile3 = JSON.parse(response);
+        file = csvFile3;
+        fileName = "life_expectancy_years";
         showFile3();
     });
 };
 
 //Function dedicated to drawing the axis on the graph
 function drawGraph(){
-    $("svg").empty();
-    //var g = d3.select("svg").selectAll("g").data(csvFile3);
-    //Creating the axis
-    var width = 1100, height = 1100;
+    $("svg").empty(); //Emptying the svg ement at every intervile of the slider so the data dosnt stack on top oif its self
 
-    var data = [10, 15, 20, 25, 30];
-    var svg = d3.select("#svg")
-        .append("svg")
+    var width = 1100, height = 1100;
+  
+    var svg = d3.select("svg")
         .attr("id", "axis")
         .attr("width", width)
-        .attr("height", height);
-       
+        .attr("height", height);  
 
     var xscale = d3.scaleLinear()
         .domain([0, 100])
@@ -137,18 +147,16 @@ function showFile3(){
     en.append("text").text(function(d){ return d.name });
 };
 
+//Function for calling and generating the visuals accioated with the csv data set 1.
 function graph(){
-    drawGraph();
-    //call item from a point in an array !!
-    //var arrLength = csvFile1.length; //Getting the length of the array
-    
-    // console.log(csvFile1[0].name);    
-    // console.log(csvFile1[0].data.aged_25_54_labour_force_participation_rate_percent["1990"]); //??? this just calls the whole dict accioated with the country
-    // console.log(csvFile1[1].name); //is there a way of getting just one item from dict?
-    // console.log(csvFile1[1].data);  //Like this
+    // xAxisMax = d3.max(csvFile1[2020].aged_25_54_labour_force_participation_rate_percent[year]);
+    // yAxisMax = d3.max(csvFile1[2020].aged_25_54_labour_force_participation_rate_percent[year]);
+    // console.log(xAxisMax, yAxisMax);
 
+    //DrawGraph function used to draw the axis within the SVG element.
+    drawGraph();
+    //Code used for creating a slider which changes the data to show the requested year.
     var data = [1990, 2030];
-    
     var slider = d3Slider.sliderHorizontal()
       .domain(d3.extent(data))
       .width(500)
@@ -157,52 +165,36 @@ function graph(){
       .on('onchange', val => {  
         year = Math.round(val)
         d3.select("p#value").text(year)
-        console.log(year)
-        
+        //console.log(year)
+        //Calling the graph2 function which draws the data for the correct year on graph. 
         graph2();
       });
-      
-
     var g = d3.select("div#value").append("svg")
       .attr("width", 500)
       .attr("height", 100)
       .append("g")
       .attr("transform", "translate(30,30)");
-
-    g.call(slider);
-
-    // d3.select("a#setValue").on("click", () => slider.value(1));
-    // d3.select("a#changeWidth").on("click", () => g.call(slider.width(Math.floor(Math.random() * 500) + 200)));
-
-    // var temp = csvFile1[i].data.aged_25_54_labour_force_participation_rate_percent["1990"];
-    // console.log(temp);
-   
-
-    //Testing axis 
     
+    g.call(slider);
 };
+
 function graph2(){
     $("svg#data").empty();
     var g = d3.select("#axis").append("svg").attr("id", "data").selectAll("g").data(csvFile1)
         .attr("padding-left", "40");
     var x = 0;
     var drawX;
-
     // create new 'g' elements for each country
     var en = g.enter().append("g")
         .attr("transform",function(d, i){ 
-        x = csvFile1[i].data.aged_25_54_labour_force_participation_rate_percent[year];
+        x = file[i].data.fileName[year];
         drawX = x * 5;
-        return "translate("+ (drawX) + 100 + "," + (600 - (csvFile1[i].data.aged_25_54_labour_force_participation_rate_percent[year] * 3)) + 40 +")" 
+        return "translate("+ (drawX) + 100 + "," + (600 - (file[i].data.fileName[year] * 3)) + 40 +")" 
         });
-        
-
-    // add a circle to each 'g'
-    //if slider is 'year' do \/
-    //getElementById 'year'
+    //add a circle to each 'g'
     var circle = en.append("circle")
         .attr("r",function(d,i){ 
-            return csvFile1[i].data.aged_25_54_labour_force_participation_rate_percent[year]/4
+            return file[i].data.fileName[year]/4
         })
         .attr("fill",function(d,i){ return i % 2 == 0 ? "red" : "blue" })
         
@@ -213,48 +205,7 @@ function graph2(){
             circle.style("opacity", 0.2)         
         })
         
-
-    // add a text to each 'g'
-    en.append("text").text(function(d){ return d.name });
-<<<<<<< HEAD
-   
-    //Tesing axis
-    var width = 400, height = 100;
-
-    var data = [10, 15, 20, 25, 30];
-    var svg = d3.select("body")
-        .append("svg")
-        .attr("width", width)
-        .attr("height", height);
-
-    var xscale = d3.scaleLinear()
-        .domain([0, d3.max(data)])
-        .range([0, width - 100]);
-
-    var yscale = d3.scaleLinear()
-            .domain([0, d3.max(data)])
-            .range([height/2, 0]);
-
-    var x_axis = d3.axisBottom()
-            .scale(xscale);
-
-    var y_axis = d3.axisLeft()
-            .scale(yscale);
-
-        svg.append("g")
-        .attr("transform", "translate(50, 10)")
-        .call(y_axis);
-
-    var xAxisTranslate = height/2 + 10;
-
-        svg.append("g")
-                .attr("transform", "translate(50, " + xAxisTranslate  +")")
-                .call(x_axis)
-
 };
    
-=======
-}
->>>>>>> 334779483aea47d8b1ec0f48e6695fd1b7f70c78
        
 
