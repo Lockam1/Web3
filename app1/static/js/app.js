@@ -197,7 +197,7 @@ function graph2(){
         .attr("transform",function(d, i){ 
         x = file[i].data.aged_25_54_labour_force_participation_rate_percent[year];
         drawX = x * 5;
-        return "translate("+ (drawX) + 100 + "," + (popTotal[i].data.population_total[year]/10000000) + 40 +")" 
+        return "translate("+ (drawX) + 100 + "," + (200 - (popTotal[i].data.population_total[year]/10000000)) + 40 +")" 
         });
     //add a circle to each 'g'
     var circle = en.append("circle")
