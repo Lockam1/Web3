@@ -149,7 +149,7 @@ function showFile3(){
 
 //Function for calling and generating the visuals accioated with the csv data set 1.
 function graph(){
-    xAxisMax = d3.max(d3.values(csvFile1));
+    xAxisMax = d3.max(csvFile1);
     // yAxisMax = d3.max(csvFile1[2020].aged_25_54_labour_force_participation_rate_percent[year]);
     console.log(xAxisMax);
 
