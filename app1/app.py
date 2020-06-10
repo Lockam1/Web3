@@ -137,29 +137,32 @@ def csvtodb():
                     country.data = dict
                 # save the country
                 country.save()
-            # dict = {} # a blank placeholder data dict
-            # print(data)
-            # for key in data: # iterate through the header keys
-            #     if key == "country":
-            #         if not checkCountryExsist(country):
-            #             country.name = data[key]
-            #         # If the name wasnt it adds it here?
-            #         else: 
-            #             country = Csv1.query.filter_by(name=data[key]).first()
-            #             dict = country.data
-            #             # if the country already exists, replace the blank country with the existing country from the db, and replace the blank dict with the current country's 
-            #             # data                
-            #     else:
-            #         f = filename.replace(".csv","") # we want to trim off the ".csv" as we can't save anything with a "." as a mongodb field name
-            #         if f in dict: # check if this filename is already a field in the dict
-            #             dict[f][key] = data[key] # if it is, just add a new subfield which is key : data[key] (value)
-            #         else:
-            #             dict[f] = {key:data[key]} # if it is not, create a new object and assign it to the dict
+        elif count == 3:#Csv file 4 reading and saving
+            for data in d:  
+                country = Csv4() # a blank placeholder country
+                dict = {} # a blank placeholder data dict
+                print(data)
+                for key in data: # iterate through the header keys
+                    if key == "country":
+                        if not checkCSV4Exsist(country):
+                            country.name = data[key]
+                        # If the name wasnt it adds it here?
+                        else: 
+                            country = Csv4.query.filter_by(name=data[key]).first()
+                            dict = country.data
+                            # if the country already exists, replace the blank country with the existing country from the db, and replace the blank dict with the current country's 
+                            # data                
+                    else:
+                        f = filename.replace(".csv","") # we want to trim off the ".csv" as we can't save anything with a "." as a mongodb field name
+                        if f in dict: # check if this filename is already a field in the dict
+                            dict[f][key] = data[key] # if it is, just add a new subfield which is key : data[key] (value)
+                        else:
+                            dict[f] = {key:data[key]} # if it is not, create a new object and assign it to the dict
 
-            #     # add the data dict to the country
-            #     country.data = dict
-            # # save the country
-            # country.save()
+                    # add the data dict to the country
+                    country.data = dict
+                # save the country
+                country.save()
         count += 1
         print(count)   
     return 'Success', 200   
@@ -173,6 +176,9 @@ def csv2():
 @app.route('/csv3')
 def csv3():
     return Csv3.objects.to_json(), 200
+@app.route('/csv4')
+def csv4():
+    return Csv4.objects.to_json(), 200
 
 #=============
 #Tesing routes
@@ -216,6 +222,8 @@ def checkCSV2Exsist(c):
     return any(Csv2.name is c for c in Csv2.objects)
 def checkCSV3Exsist(c):
     return any(Csv3.name is c for c in Csv3.objects)
+def checkCSV4Exsist(c):
+    return any(Csv4.name is c for c in Csv4.objects)
 
 if __name__ =="__main__":
     app.run(host='0.0.0.0', port=80)

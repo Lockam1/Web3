@@ -46,6 +46,14 @@ function dataForCsv3(){
         showFile3();
     });
 };
+function dataForCsv4(){
+    $.get('/csv4', function(response){
+        csvFile4 = JSON.parse(response);
+        file = csvFile4;
+        fileName = "population_total";
+        showFile4();
+    });
+};
 
 //Function dedicated to drawing the axis on the graph
 function drawGraph(){
