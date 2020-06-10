@@ -19,6 +19,9 @@ class Csv2(Document):  #Setting up fields needed for the database additions
 class Csv3(Document):  #Setting up fields needed for the database additions  
     name = StringField()
     data = DictField()
+class Csv4(Document):  #Setting up fields needed for the database additions  
+    name = StringField()
+    data = DictField()
 
 #==========
 #Main pages
