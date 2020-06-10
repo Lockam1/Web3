@@ -55,8 +55,6 @@ def d3():
 def csvtodb():
     count = 0
     for file in os.listdir(app.config['FILES_FOLDER']):
-        # count += 1
-        # print(count)
         filename = os.fsdecode(file)
         path = os.path.join(app.config['FILES_FOLDER'],filename)
         f = open(path)
@@ -161,7 +159,6 @@ def csvtodb():
                             dict[f][key] = data[key] # if it is, just add a new subfield which is key : data[key] (value)
                         else:
                             dict[f] = {key:data[key]} # if it is not, create a new object and assign it to the dict
-
                     # add the data dict to the country
                     country.data = dict
                 # save the country
