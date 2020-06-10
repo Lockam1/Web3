@@ -187,14 +187,14 @@ function graph2(){
     // create new 'g' elements for each country
     var en = g.enter().append("g")
         .attr("transform",function(d, i){ 
-        x = file[i].data.fileName[year];
+        x = file[i].data.aged_25_54_labour_force_participation_rate_percent[year];
         drawX = x * 5;
-        return "translate("+ (drawX) + 100 + "," + (600 - (file[i].data.fileName[year] * 3)) + 40 +")" 
+        return "translate("+ (drawX) + 100 + "," + (600 - (file[i].data.aged_25_54_labour_force_participation_rate_percent[year] * 3)) + 40 +")" 
         });
     //add a circle to each 'g'
     var circle = en.append("circle")
         .attr("r",function(d,i){ 
-            return file[i].data.fileName[year]/4
+            return file[i].data.aged_25_54_labour_force_participation_rate_percent[year]/4
         })
         .attr("fill",function(d,i){ return i % 2 == 0 ? "red" : "blue" })
         
