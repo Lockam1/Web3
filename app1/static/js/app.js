@@ -202,7 +202,7 @@ function graph2(){
     //add a circle to each 'g'
     var circle = en.append("circle")
         .attr("r",function(d,i){ 
-            return popTotal[i].data.population_total[year]/100000
+            return popTotal[i].data.population_total[year]/1000000
         })
         .attr("fill",function(d,i){ return i % 2 == 0 ? "red" : "blue" })
         
