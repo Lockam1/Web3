@@ -138,7 +138,7 @@ def csvtodb():
                     country.data = dict
                 # save the country
                 country.save()
-        elif count == 3:#Csv file 4 reading and saving
+        else:#Csv file 4 reading and saving
             for data in d:  
                 country = Csv4() # a blank placeholder country
                 dict = {} # a blank placeholder data dict
