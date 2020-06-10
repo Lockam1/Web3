@@ -10,15 +10,19 @@ app = Flask(__name__)
 CORS(app)
 app.config.from_object('config')
 
+#Popultaion total
 class Csv1(Document):  #Setting up fields needed for the database additions  
     name = StringField()
     data = DictField()
+#force labour participation
 class Csv2(Document):  #Setting up fields needed for the database additions  
     name = StringField()
     data = DictField()
+#Income perpeson per captia
 class Csv3(Document):  #Setting up fields needed for the database additions  
     name = StringField()
     data = DictField()
+#Life expectancy in years.
 class Csv4(Document):  #Setting up fields needed for the database additions  
     name = StringField()
     data = DictField()

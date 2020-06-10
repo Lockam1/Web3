@@ -26,7 +26,7 @@ function dataForCsv1(){
     $.get('/csv1', function(response){
         csvFile1 = JSON.parse(response);
         file = csvFile1;
-        fileName = "aged_25_54_labour_force_participation_rate_percent";
+        fileName = "population_total";
         graph();
     });
 };
@@ -34,7 +34,7 @@ function dataForCsv2(){
     $.get('/csv2', function(response){
         csvFile2 = JSON.parse(response);
         file = csvFile2;
-        fileName = "income_per_person_gdppercapita_ppp_inflation_adjusted";
+        fileName = "aged_25_54_labour_force_participation_rate_percent";
         showFile2();
     });
 };
@@ -42,7 +42,7 @@ function dataForCsv3(){
     $.get('/csv3', function(response){
         csvFile3 = JSON.parse(response);
         file = csvFile3;
-        fileName = "life_expectancy_years";
+        fileName = "income_per_person_gdppercapita_ppp_inflation_adjusted";
         showFile3();
     });
 };
@@ -50,7 +50,7 @@ function dataForCsv4(){
     $.get('/csv4', function(response){
         csvFile4 = JSON.parse(response);
         file = csvFile4;
-        fileName = "population_total";
+        fileName = "life_expectancy_years";
         showFile4();
     });
 };
