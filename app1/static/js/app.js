@@ -6,9 +6,10 @@ var csvFile3;
 var year; //Variable to contain the slider year data
 var xAxisMax;
 var yAxisMax;
-var file1Data;
-var file2Data;
-var file3Data;
+var popTotal;
+// var file1Data;
+// var file2Data;
+// var file3Data;
 
 var file; //Gets over written on button click.
 var fileName;  //Gets over written on button click with the file name.
@@ -22,9 +23,9 @@ var fileName;  //Gets over written on button click with the file name.
  //});
 
 //Parsing data from the app.py to here in JSON format and converting to a useable format.
-function dataForCsv1(){ //Population Total
+function getPopulation(){ //Population Total
     $.get('/csv1', function(response){
-        //csvFile1 = JSON.parse(response);
+        popTotal = JSON.parse(response);
         fileName = "population_total";
     });
 };
@@ -33,6 +34,7 @@ function dataForCsv2(){ //Forced labour particapation
         csvFile1 = JSON.parse(response);
         file = csvFile1;
         fileName = "aged_25_54_labour_force_participation_rate_percent";
+        getPopulation()
         graph()
     });
 };
@@ -200,7 +202,7 @@ function graph2(){
     //add a circle to each 'g'
     var circle = en.append("circle")
         .attr("r",function(d,i){ 
-            return file[i].data.aged_25_54_labour_force_participation_rate_percent[year]/4
+            return popTotal[i].data.population_total[year]/4
         })
         .attr("fill",function(d,i){ return i % 2 == 0 ? "red" : "blue" })
         
