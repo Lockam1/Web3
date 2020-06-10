@@ -22,36 +22,35 @@ var fileName;  //Gets over written on button click with the file name.
  //});
 
 //Parsing data from the app.py to here in JSON format and converting to a useable format.
-function dataForCsv1(){
+function dataForCsv1(){ //Population Total
     $.get('/csv1', function(response){
         csvFile1 = JSON.parse(response);
         file = csvFile1;
         fileName = "population_total";
-        graph();
     });
 };
-function dataForCsv2(){
+function dataForCsv2(){ //Forced labour particapation
     $.get('/csv2', function(response){
         csvFile2 = JSON.parse(response);
         file = csvFile2;
         fileName = "aged_25_54_labour_force_participation_rate_percent";
-        showFile2();
+        graph()
     });
 };
-function dataForCsv3(){
+function dataForCsv3(){ //Income per peson per captia
     $.get('/csv3', function(response){
         csvFile3 = JSON.parse(response);
         file = csvFile3;
         fileName = "income_per_person_gdppercapita_ppp_inflation_adjusted";
-        showFile3();
+        showFile2();
     });
 };
-function dataForCsv4(){
+function dataForCsv4(){ //Life expactancy
     $.get('/csv4', function(response){
         csvFile4 = JSON.parse(response);
         file = csvFile4;
         fileName = "life_expectancy_years";
-        showFile4();
+        showFile3();
     });
 };
 
