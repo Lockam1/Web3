@@ -197,12 +197,12 @@ function graph2(){
         .attr("transform",function(d, i){ 
         x = file[i].data.aged_25_54_labour_force_participation_rate_percent[year];
         drawX = x * 5;
-        return "translate("+ (drawX) + 100 + "," + (600 - (file[i].data.aged_25_54_labour_force_participation_rate_percent[year] * 3)) + 40 +")" 
+        return "translate("+ (drawX) + 100 + "," + (600 - (popTotal[i].data.population_total[year]/10000000)) + 40 +")" 
         });
     //add a circle to each 'g'
     var circle = en.append("circle")
         .attr("r",function(d,i){ 
-            return popTotal[i].data.population_total[year]/10000000
+            return file[i].data.aged_25_54_labour_force_participation_rate_percent[year]
         })
         .attr("fill",function(d,i){ return i % 2 == 0 ? "red" : "blue" })
         
