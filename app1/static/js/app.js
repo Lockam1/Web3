@@ -189,7 +189,7 @@ function graph(){
 function graph2(){
     $("svg#data").empty();
     var g = d3.select("#axis").append("svg").attr("id", "data").selectAll("g").data(csvFile1)
-        .attr("padding-left", "70");
+        .attr("padding-left", "40");
     var x = 0;
     var drawX;
     var population2radius = d3.scaleSqrt() // instead of scaleLinear()
@@ -201,7 +201,7 @@ function graph2(){
         x = file[i].data.aged_25_54_labour_force_participation_rate_percent[year];
         drawX = x * 5;
         y = population2radius(popTotal[i].data.population_total[year]);
-        return "translate("+ (drawX) + 100 + "," + (600 - (y) / 2) + 70 +")" 
+        return "translate("+ (drawX) + 100 + "," + (500 - (y) / 2) + 40 +")" 
         //if population is above 400 million place at top of graph
         });
     //add a circle to each 'g'
