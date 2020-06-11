@@ -192,18 +192,18 @@ function graph2(){
         .attr("padding-left", "40");
     var x = 0;
     var drawX;
+    var population2radius = d3.scaleSqrt() // instead of scaleLinear()
+        .domain([0, 2e9])
+        .range([0, 300])
     // create new 'g' elements for each country
     var en = g.enter().append("g")
         .attr("transform",function(d, i){ 
         x = file[i].data.aged_25_54_labour_force_participation_rate_percent[year];
         drawX = x * 5;
-        return "translate("+ (drawX) + 100 + "," + (600 - (file[i].data.aged_25_54_labour_force_participation_rate_percent[year])) + 40 +")" 
+        return "translate("+ (drawX) + 100 + "," + (600 - (population2radius(popTotal[i].data.population_total[year])/5) + 40 +")" 
         //if population is above 400 million place at top of graph
         });
     //add a circle to each 'g'
-    var population2radius = d3.scaleSqrt() // instead of scaleLinear()
-        .domain([0, 2e9])
-        .range([0, 300])
     var circle = en.append("circle")
         .attr("r",function(d,i){ 
             return population2radius(popTotal[i].data.population_total[year]) 
