@@ -81,13 +81,13 @@ function drawGraph(){
         .scale(yscale);
 
     svg.append("g")
-        .attr("transform", "translate(50, 10)")
+        .attr("transform", "translate(70, 10)")
         .call(y_axis)
 
     var xAxisTranslate = height/2 + 10;
 
     svg.append("g")
-        .attr("transform", "translate(50, " + xAxisTranslate  +")")
+        .attr("transform", "translate(70, " + xAxisTranslate  +")")
         .call(x_axis)
 }
 
