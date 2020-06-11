@@ -201,7 +201,7 @@ function graph2(){
         x = file[i].data.aged_25_54_labour_force_participation_rate_percent[year];
         drawX = x * 5;
         y = population2radius(popTotal[i].data.population_total[year]);
-        return "translate("+ (drawX) + 100 + "," + (600 - (y) / 5) + 70 +")" 
+        return "translate("+ (drawX) + 100 + "," + (600 - (y) / 2) + 70 +")" 
         //if population is above 400 million place at top of graph
         });
     //add a circle to each 'g'
