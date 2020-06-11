@@ -201,10 +201,12 @@ function graph2(){
         //if population is above 400 million place at top of graph
         });
     //add a circle to each 'g'
-    var population2radius = d3.scaleSqrt(popTotal[i].data.population_total[year]) // instead of scaleLinear()
+    var population2radius = d3.scaleSqrt() // instead of scaleLinear()
+        .domain([0, 2e9])
+        .range([0, 300])
     var circle = en.append("circle")
         .attr("r",function(d,i){ 
-            return population2radius //square rooted of the pop size
+            return population2radius(popTotal[i].data.population_total[year]) 
         })
         .attr("fill",function(d,i){ return i % 2 == 0 ? "red" : "blue" })
         
