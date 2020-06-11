@@ -71,7 +71,7 @@ function drawGraph(){
         .range([0, width - 100]);
 
     var yscale = d3.scaleLinear()
-        .domain([0, 100])
+        .domain([0, 600000000])
         .range([height/2, 0]);
 
     var x_axis = d3.axisBottom()
