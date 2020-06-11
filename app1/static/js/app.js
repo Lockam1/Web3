@@ -71,7 +71,7 @@ function drawGraph(){
         .range([0, width - 100]);
 
     var yscale = d3.scaleLinear()
-        .domain([0, 600000000])
+        .domain([0, 400000000])
         .range([height/2, 0]);
 
     var x_axis = d3.axisBottom()
@@ -198,6 +198,7 @@ function graph2(){
         x = file[i].data.aged_25_54_labour_force_participation_rate_percent[year];
         drawX = x * 5;
         return "translate("+ (drawX) + 100 + "," + (600 - (file[i].data.aged_25_54_labour_force_participation_rate_percent[year])) + 40 +")" 
+        //if population is above 400 million place at top of graph
         });
     //add a circle to each 'g'
     var circle = en.append("circle")
