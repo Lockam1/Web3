@@ -1,23 +1,20 @@
-const https = require('http');
+const https = require('https');
 
-_EXTERNAL_URL = 'http://192.168.1.156:80/csv2';
+https.get('https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY', (resp) => {
+  let data = '';
 
-const callExternalAPIHttp = (callback) => {
-    https.get(_EXTERNAL_URL, (resp) => {
-        let data = '';
+  // A chunk of data has been recieved.
+  resp.on('data', (chunk) => {
+    data += chunk;
+  });
 
-        resp.on('data', (chunk) => {
-            data += chunk;
-        });
-        resp.on('end', () => {
-            console.log(data);
-            return callback(data);
-           
-        });
+  // The whole response has been received. Print out the result.
+  resp.on('end', () => {
+    console.log(JSON.parse(data).explanation);
+  });
 
-    }).on("error", (err) => {
-        console.log("Error: " + err.message);
-    });
-}
+}).on("error", (err) => {
+  console.log("Error: " + err.message);
+});
 
 module.exports.callApi = callExternalAPIHttp;

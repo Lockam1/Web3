@@ -1,18 +1,27 @@
 extends layout
 
 block content
-  h1 Please select a counrty:
-  p Drop down slection here
+  form(method="post" action='/')
+    h1 Please select a country:
+      select(name='dropDown', id='')
+        each val in ['red' , 'green' , 'blue']
+          option=val
+        input(type='submit', value='Submit')
   h2 Country Name:
-  h2 Data Number 2020:
-  h3 Update Country:
+  h2 Data from the country for the year - 2020:
+  //Seperators spacing out the forms
+  div 
+  div
   form(method='POST' action='/updateCountry')
-          div.form-group
-            label(for='name') Name:
-            input#name.form-control(type='text', placeholder='Country Name' name='name')
-          button.btn.btn-primary(type='submit') Update
-  div(id ="like_button_container")
+    h3 Update Country:
+      select(name='dropDown', id='')
+        each val in ['red' , 'green' , 'blue']
+          option=val
+        input(type='submit', value='Submit')
+    button.btn.btn-primary(type='submit') Update
+  div#like_button_container
 
+  
   script(src="https://unpkg.com/react@16/umd/react.development.js" crossorigin)
   script(src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin)
   script(src="javascripts/like_button.js")
