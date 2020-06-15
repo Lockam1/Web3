@@ -1,25 +1,18 @@
-const https = require('https');
 
-function getData() {
-    https.get('https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY', (resp) => {
-        let data = '';
+var usableData;
+//Calling the URL from App1 which has the json data.
+var url = 'http://192.168.1.156:80/csv4';
+$.getJSON(url, function(data) {
+//   console.log("Data from App1")
+//   console.log(data)
+    localStorage.setItem('data', JSON.stringify(data))
+    usableData = localStorage.getItem('data'); 
+    console.log('UsableData: ', JSON.parse(usableData));
+});
 
-        // A chunk of data has been recieved.
-        resp.on('data', (chunk) => {
-            data += chunk;
-        });
-
-        // The whole response has been received. Print out the result.
-        resp.on('end', () => {
-            try {
-                let json = JSON.parse(body);
-                // do something with JSON
-            } catch (error) {
-                console.error(error.message);
-            };
-        });
-
-        }).on("error", (err) => {
-        console.log("Error: " + err.message);
-        });
-};
+//loop for adding the countries to the drop down selection.
+var select = document.getElementById('select2');
+for (var i =0; i < usableData.length; i++){
+    select.innerHTML = select.innerHTML +
+        '<option value="' + usableData[i]['id'] + '">' + usableData[i]['name'] + '</option>'
+}
