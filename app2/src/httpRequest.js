@@ -15,7 +15,9 @@ fetch("http://192.168.1.156:80/csv4")
     .then(res => res.json())
     .then(data => usableData = data)
     .then(() => console.log(usableData));
-
+    // localStorage.setItem('data', JSON.stringify(tmep));
+    // usableData = localStorage.getItem('data'); 
+    // console.log('UsableData: ', JSON.parse(usableData));
 
 
 // localStorage.setItem('data', JSON.stringify(tmep));
