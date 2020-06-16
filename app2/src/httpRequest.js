@@ -4,7 +4,7 @@ const jsdom = require("jsdom");
 const { JSDOM } = jsdom;
 // const LocalStorage = require('node-localstorage').LocalStorage;
 const window = new Window();
-global.document = new JSDOM(html).window.document;
+// global.document = new JSDOM(html).window.document;
 // localStorage = new LocalStorage('./scratch');
 
 var usableData;
@@ -28,7 +28,7 @@ async function getData(){
     console.log(json);
     
     //loop for adding the countries to the drop down selection.
-    var select = document.getElementById('select2');
+    var select = window.document.getElementById('select2');
 
     for (var i = 0; i < json.length; i++){
         select.innerHTML = select.innerHTML +
