@@ -4,7 +4,7 @@ import Select from 'react-select';
 // window.onload = getData();
 
 async function getData(){
-    json = await fetch('http://10.25.138.110:80/csv1')
+    json = await fetch('http://192.168.1.156:80/csv4')
         .then(response => response.json());
     console.log(json);
     return json;

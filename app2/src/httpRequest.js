@@ -4,12 +4,8 @@ const jsdom = require("jsdom");
 const { JSDOM } = jsdom;
 // const LocalStorage = require('node-localstorage').LocalStorage;
 const window = new Window();
-// global.document = new JSDOM(html).window.document;
+//global.document = new JSDOM(html).window.document;
 // localStorage = new LocalStorage('./scratch');
-
-var usableData;
-var temp;
-
 //Calling the URL from App1 which has the json data.
 var url = "http://10.25.138.110:80/csv1"; //OP network
 var url1 = "http://192.168.1.156:80/csv4"; //Home network
@@ -20,22 +16,36 @@ var url1 = "http://192.168.1.156:80/csv4"; //Home network
 //     usableData = localStorage.getItem('data'); 
 //     console.log('UsableData: ', JSON.parse(usableData));
 // });
+
+//Selecting the select block to append option to as a dropdown.
+
+
 window.onload = getData();
 
 async function getData(){
-    const json = await fetch('http://10.25.138.110:80/csv1')
+    const json = await fetch('http://192.168.1.156:80/csv4')
         .then(response => response.json());
     console.log(json);
     
     //loop for adding the countries to the drop down selection.
-    var select = window.document.getElementById('select2');
-
-    // for (var i = 0; i < json.length; i++){
+    for (var i = 0; i < json.length; i++){
+        const temp = json[i]['name'];
+        var sel = window.document.getElementById('select1');
+        var opt = window.document.createElement('option');
+        opt.appendChild( window.document.createTextNode(temp));
+        opt.value = temp;
+        console.log(temp);
+        if (sel != null){
+            sel.appendChild(opt);
+            console.log('Option for ' + temp + ' added');
+        }
+        
+    }
+}
+// for (var i = 0; i < json.length; i++){
     //     select.innerHTML = select.innerHTML +
     //         '<option value="' + json[i]['id'] + '">' + json[i]['name'] + '</option>'
     // }
-}
-
 
     // window.localStorage.setItem('data', JSON.stringify(temp));
     // usableData = window.localStorage.getItem('data'); 
