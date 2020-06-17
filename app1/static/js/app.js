@@ -83,26 +83,14 @@ function drawGraph(){
     svg.append("g")
         .attr("transform", "translate(70, 10)")
         .call(y_axis)
-    svg.append("text")
-        .attr("transform", "rotate(-90)")
-        .attr("y", 0 - margin.left)
-        .attr("x",0 - (height / 2))
-        .attr("dy", "1em")
-        .style("text-anchor", "middle")
-        .text("Labour force participation rate. 25-50yr olds");  
+ 
 
     var xAxisTranslate = height/2 + 10;
 
     svg.append("g")
         .attr("transform", "translate(70, " + xAxisTranslate  +")")
         .call(x_axis)
-    //lable for x axis
-    svg.append("text")             
-        .attr("transform",
-              "translate(" + (width/2) + " ," + 
-                             (height + margin.top + 20) + ")")
-        .style("text-anchor", "middle")
-        .text("Date");
+   
 }
 
 //Functions for displaying the data for the three files.
