@@ -17,6 +17,9 @@ class LikeButton extends React.Component {
       'button',
       { onClick: () => this.setState({ liked: true }) },
       'Like'
+      // newarray = countries.map((country, i) => {
+
+      
     );
   }
 }

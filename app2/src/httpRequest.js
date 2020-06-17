@@ -30,10 +30,10 @@ async function getData(){
     //loop for adding the countries to the drop down selection.
     var select = window.document.getElementById('select2');
 
-    for (var i = 0; i < json.length; i++){
-        select.innerHTML = select.innerHTML +
-            '<option value="' + json[i]['id'] + '">' + json[i]['name'] + '</option>'
-    }
+    // for (var i = 0; i < json.length; i++){
+    //     select.innerHTML = select.innerHTML +
+    //         '<option value="' + json[i]['id'] + '">' + json[i]['name'] + '</option>'
+    // }
 }
 
 

@@ -14,8 +14,7 @@ block content
   div
   form(method='POST' action='/updateCountry')
     h3 Update Country:
-      select#select2(name='dropDown')
-        option
+      div#country
         input(type='submit', value='Submit')
     button.btn.btn-primary(type='submit') Update
   div#like_button_container
@@ -23,5 +22,5 @@ block content
   script(src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous")
   script(src="https://unpkg.com/react@16/umd/react.development.js" crossorigin)
   script(src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin)
-  script(src="javascripts/httpRequest.js")
+  script(src="javascripts/main.js")
   script(src="javascripts/like_button.js")
