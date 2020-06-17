@@ -202,19 +202,22 @@ function graph2(){
         .domain([0, 2e9])
         .range([0, 300])
 
-    //Deciding which file to view
-    if(whichFile = 1){
-        x = file[i].data.aged_25_54_labour_force_participation_rate_percent[year];
-    } else if(whichFile = 2){
-        x = file[i].data.income_per_person_gdppercapita_ppp_inflation_adjusted[year];
-    } else if(whichFile = 3){
-        x = file[i].data.life_expectancy_years[year];
-    }
+    
 
     // create new 'g' elements for each country
     var en = g.enter().append("g")
         .attr("transform",function(d, i){ 
-       
+       //Deciding which file to view
+        if(whichFile = 1){
+            console.log(whichFile);
+            x = file[i].data.aged_25_54_labour_force_participation_rate_percent[year];
+        } else if(whichFile = 2){
+            console.log(whichFile);
+            x = file[i].data.income_per_person_gdppercapita_ppp_inflation_adjusted[year];
+        } else if(whichFile = 3){
+            console.log(whichFile);
+            x = file[i].data.life_expectancy_years[year];
+        }
         drawX = x * 5;
         y = population2radius(popTotal[i].data.population_total[year]);
         drawY = y;
