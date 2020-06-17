@@ -11,8 +11,6 @@ var popTotal;
 // var file2Data;
 // var file3Data;
 
-var whichFile = 0;
-
 var file; //Gets over written on button click.
 var fileName;  //Gets over written on button click with the file name.
 
@@ -36,7 +34,6 @@ function dataForCsv2(){ //Forced labour particapation
         csvFile1 = JSON.parse(response);
         file = csvFile1;
         fileName = "aged_25_54_labour_force_participation_rate_percent";
-        whichFile = 1;
         getPopulation()
         graph()
     });
@@ -45,7 +42,6 @@ function dataForCsv3(){ //Income per peson per captia
     $.get('/csv3', function(response){
         csvFile2 = JSON.parse(response);
         file = csvFile2;
-        whichFile = 2;
         fileName = "income_per_person_gdppercapita_ppp_inflation_adjusted";
         showFile2();
     });
@@ -54,7 +50,6 @@ function dataForCsv4(){ //Life expactancy
     $.get('/csv4', function(response){
         csvFile3 = JSON.parse(response);
         file = csvFile3;
-        whichFile = 3;
         fileName = "life_expectancy_years";
         showFile3();
     });
