@@ -26,19 +26,20 @@ async function getData(){
     const json = await fetch('http://192.168.1.156:80/csv4')
         .then(response => response.json());
     console.log(json);
-    
+    var sel = window.document.getElementsByClassName("select");
     //loop for adding the countries to the drop down selection.
     for (var i = 0; i < json.length; i++){
         const temp = json[i]['name'];
-        var sel = window.document.getElementById('select1');
-        var opt = window.document.createElement('option');
+        
+        var opt = window.document.createElement("option");
         opt.appendChild( window.document.createTextNode(temp));
         opt.value = temp;
         console.log(temp);
-        if (sel != null){
-            sel.appendChild(opt);
-            console.log('Option for ' + temp + ' added');
-        }
+        // if (sel != null){
+        window.document.getElementsByClassName("select")[0].appendChild(opt);
+        sel.appendChild(opt);
+        console.log("Option for " + temp + " added");
+        // }
         
     }
 }
