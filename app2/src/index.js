@@ -10,7 +10,7 @@ import Select from 'react-select';
 //     console.log(json);
 //     return json;
 async function getData(){
-    json = await fetch('http://192.168.1.156:80/csv4')
+    json = await fetch('http://10.25.138.110:80/csv1')
         .then(response => response.json());
     console.log(json + 'Or here?');
     return json;

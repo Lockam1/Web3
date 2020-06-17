@@ -23,7 +23,7 @@ var url1 = "http://192.168.1.156:80/csv4"; //Home network
 window.onload = getData();
 
 async function getData(){
-    const json = await fetch('http://192.168.1.156:80/csv4')
+    const json = await fetch('http://10.25.138.110:80/csv1')
         .then(response => response.json());
     console.log(json);
     var sel = window.document.getElementsByClassName("select");
