@@ -10,6 +10,7 @@ var popTotal;
 // var file1Data;
 // var file2Data;
 // var file3Data;
+var whichFile = 0; 
 
 var file; //Gets over written on button click.
 var fileName;  //Gets over written on button click with the file name.
@@ -29,10 +30,11 @@ function getPopulation(){ //Population Total
         fileName = "population_total";
     });
 };
-function dataForCsv2(){ //Forced labour particapation
+function dataForCsv2(){ // labour force particapation
     $.get('/csv2', function(response){
         csvFile1 = JSON.parse(response);
         file = csvFile1;
+        whichFile = 1;
         fileName = "aged_25_54_labour_force_participation_rate_percent";
         getPopulation()
         graph()
@@ -42,16 +44,18 @@ function dataForCsv3(){ //Income per peson per captia
     $.get('/csv3', function(response){
         csvFile2 = JSON.parse(response);
         file = csvFile2;
+        whichFile = 2;
         fileName = "income_per_person_gdppercapita_ppp_inflation_adjusted";
-        showFile2();
+        // showFile2();
     });
 };
 function dataForCsv4(){ //Life expactancy
     $.get('/csv4', function(response){
         csvFile3 = JSON.parse(response);
         file = csvFile3;
+        whichFile = 3;
         fileName = "life_expectancy_years";
-        showFile3();
+        // showFile3();
     });
 };
 
@@ -197,10 +201,20 @@ function graph2(){
     var population2radius = d3.scaleSqrt() // instead of scaleLinear()
         .domain([0, 2e9])
         .range([0, 300])
+
+    //Deciding which file to view
+    if(whichFile = 1){
+        x = file[i].data.aged_25_54_labour_force_participation_rate_percent[year];
+    } else if(whichFile = 2){
+        x = file[i].data.income_per_person_gdppercapita_ppp_inflation_adjusted[year];
+    } else if(whichFile = 3){
+        x = file[i].data.life_expectancy_years[year];
+    }
+
     // create new 'g' elements for each country
     var en = g.enter().append("g")
         .attr("transform",function(d, i){ 
-        x = file[i].data.aged_25_54_labour_force_participation_rate_percent[year];
+       
         drawX = x * 5;
         y = population2radius(popTotal[i].data.population_total[year]);
         drawY = y;
