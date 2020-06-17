@@ -200,8 +200,8 @@ function graph2(){
         .attr("transform",function(d, i){ 
         x = file[i].data.aged_25_54_labour_force_participation_rate_percent[year];
         drawX = x * 5;
-        y = population2radius(popTotal[i].data.population_total[year]) / 2;
-        drawY = y / 2;
+        y = population2radius(popTotal[i].data.population_total[year]);
+        drawY = y;
         // return "translate("+ (drawX) + 100 + "," + (500 - (y) / 2) + 40 +")" 
         return "translate("+(drawX) + 100 + "," +(drawY) + 40 +")"
         //if population is above 400 million place at top of graph
@@ -209,7 +209,7 @@ function graph2(){
     //add a circle to each 'g'
     var circle = en.append("circle")
         .attr("r",function(d,i){ 
-            return population2radius(popTotal[i].data.population_total[year]) 
+            return population2radius(popTotal[i].data.population_total[year]) / 2 
         })
         .attr("fill",function(d,i){ return i % 2 == 0 ? "red" : "blue" })
         
