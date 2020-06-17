@@ -177,7 +177,7 @@ function graph(){
         //Calling the graph2 function which draws the data for the correct year on graph. 
         graph2();
       });
-    var g = d3.select("div#value")
+    var g = d3.select("div#value").append("svg")
       .attr("width", 500)
       .attr("height", 100)
       .append("g")
