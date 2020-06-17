@@ -89,6 +89,12 @@ function drawGraph(){
     svg.append("g")
         .attr("transform", "translate(70, " + xAxisTranslate  +")")
         .call(x_axis)
+        append("text")             
+            .attr("transform",
+                    "translate(" + (width/2) + " ," + 
+                                (height + margin.top + 20) + ")")
+            .style("text-anchor", "middle")
+            .text("Date");
 }
 
 //Functions for displaying the data for the three files.
@@ -201,7 +207,7 @@ function graph2(){
         x = file[i].data.aged_25_54_labour_force_participation_rate_percent[year];
         drawX = x * 5;
         y = population2radius(popTotal[i].data.population_total[year]);
-        drawY = -600 + y;
+        drawY = y;
         // return "translate("+ (drawX) + 100 + "," + (500 - (y) / 2) + 40 +")" 
         return "translate("+(drawX) + 100 + "," +(drawY) + 40 +")"
         //if population is above 400 million place at top of graph
