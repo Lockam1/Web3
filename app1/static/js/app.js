@@ -67,7 +67,7 @@ function dataForCsv4(){ //Life expactancy
 };
 
 //Function dedicated to drawing the axis on the graph
-function drawAxis(){
+function drawGraph(){
     $("svg").empty(); //Emptying the svg ement at every intervile of the slider so the data dosnt stack on top oif its self
 
     var width = 1100, height = 1100;
@@ -175,7 +175,7 @@ function graph(){
     console.log(xAxisMax);
 
     //DrawGraph function used to draw the axis within the SVG element.
-    drawData();
+    drawGraph();
     //Code used for creating a slider which changes the data to show the requested year.
     var data = [1990, 2030];
     var slider = d3Slider.sliderHorizontal()
@@ -187,8 +187,8 @@ function graph(){
         year = Math.round(val)
         d3.select("p#value").text(year)
         //console.log(year)
-        //Calling the ata2 function which draws the data for the correct year on graph. 
-        drawData();
+        //Calling the graph2 function which draws the data for the correct year on graph. 
+        graph2();
       });
     var g = d3.select("div#value").append("svg")
       .attr("width", 500)
@@ -243,7 +243,6 @@ function drawData(){
         .on("mouseout", function(d){
             circle.style("opacity", 0.2)         
         })
-        
         
 };
    
