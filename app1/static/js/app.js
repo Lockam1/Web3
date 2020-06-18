@@ -208,8 +208,7 @@ function drawData(){
         fileData = csvFile3;
     }
 
-    var g = d3.select("#axis").append("svg").attr("id", "data").selectAll("g")
-        .data(fileData)
+    var g = d3.select("#axis").append("svg").attr("id", "data").selectAll("g").data(csvFile1)
         .attr("padding-left", "40");
     var x = 0;
     
@@ -246,7 +245,7 @@ function drawData(){
     //add a circle to each 'g'
     var circle = en.append("circle")
         .attr("r",function(d,i){ 
-            return population2radius(fileData[i].data.life_expectancy_years[year]) / 2 
+            return population2radius(popTotal[i].data.population_total[year]) / 2 
         })
         .attr("fill",function(d,i){ return i % 2 == 0 ? "red" : "blue" })
         
