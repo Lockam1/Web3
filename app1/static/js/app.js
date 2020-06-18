@@ -201,27 +201,34 @@ function graph(){
 
 function drawData(){
     $("svg#data").empty();
-    var g = d3.select("#axis").append("svg").attr("id", "data").selectAll("g").data(csvFile1)
-        .attr("padding-left", "40");
+   
     var x = 0;
+    var data;
+
+    if(whichFile = 1){   
+        x = file[i].data.aged_25_54_labour_force_participation_rate_percent[year];
+        data = csvFile1;
+    } else if(whichFile = 2){        
+        x = file[i].data.income_per_person_gdppercapita_ppp_inflation_adjusted[year];
+        data = csvFile2;
+    } else if(whichFile = 3){
+        x = file[i].data.life_expectancy_years[year];
+        data = csvFile3;
+    };
+
     var drawX;
     var population2radius = d3.scaleSqrt() // instead of scaleLinear()
         .domain([0, 2e9])
         .range([0, 300])
-
+    
+    var g = d3.select("#axis").append("svg").attr("id", "data").selectAll("g").data(data)
+        .attr("padding-left", "40");
     
 
     // create new 'g' elements for each country
     var en = g.enter().append("g")
         .attr("transform",function(d, i){ 
        //Deciding which file to view
-        if(whichFile = 1){   
-            x = file[i].data.aged_25_54_labour_force_participation_rate_percent[year];
-        } else if(whichFile = 2){        
-            x = file[i].data.income_per_person_gdppercapita_ppp_inflation_adjusted[year];
-        } else if(whichFile = 3){
-            x = file[i].data.life_expectancy_years[year];
-        }
 
         drawX = x * 5;
         y = population2radius(popTotal[i].data.population_total[year]);
