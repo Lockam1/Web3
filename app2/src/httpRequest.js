@@ -14,7 +14,7 @@ var url1 = "http://192.168.1.156:80/csv4"; //Home network
 // //   console.log(data)
 //     localStorage.setItem('data', JSON.stringify(data))
 //     usableData = localStorage.getItem('data'); 
-//     console.log('UsableData: ', JSON.parse(usableData));o
+//     console.log('UsableData: ', JSON.parse(usableData));
 // });
 
 //Selecting the select block to append option to as a dropdown.
@@ -36,7 +36,7 @@ async function getData(){
         opt.value = temp;
         console.log(temp);
         // if (sel != null){
-        window.document.getElementsByClassName("select")[0].appendChild(opt); //Appending a new select element for each country name
+        window.document.getElementsByClassName("select")[0].appendChild(opt);
         sel.appendChild(opt);
         console.log("Option for " + temp + " added");
         // }
