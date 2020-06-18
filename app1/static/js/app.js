@@ -204,6 +204,8 @@ function drawData(){
     var g = d3.select("#axis").append("svg").attr("id", "data").selectAll("g").data(csvFile1)
         .attr("padding-left", "40");
     var x = 0;
+    var fileData;
+
     var drawX;
     var population2radius = d3.scaleSqrt() // instead of scaleLinear()
         .domain([0, 2e9])
@@ -217,10 +219,13 @@ function drawData(){
        //Deciding which file to view
         if(whichFile = 1){   
             x = file[i].data.aged_25_54_labour_force_participation_rate_percent[year];
+            fileData = csvFile1;
         } else if(whichFile = 2){        
             x = file[i].data.income_per_person_gdppercapita_ppp_inflation_adjusted[year];
+            fileData = csvFile2;
         } else if(whichFile = 3){
             x = file[i].data.life_expectancy_years[year];
+            fileData = csvFile3;
         }
 
         drawX = x * 5;
