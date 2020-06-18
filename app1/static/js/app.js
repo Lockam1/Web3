@@ -33,6 +33,7 @@ function getPopulation(){ //Population Total
 function dataForCsv2(){ // labour force particapation
     $.get('/csv2', function(response){
         csvFile1 = JSON.parse(response);
+        file = csvFile1;
         whichFile = 1;
         console.log(whichFile);
         fileName = "aged_25_54_labour_force_participation_rate_percent";
@@ -43,6 +44,7 @@ function dataForCsv2(){ // labour force particapation
 function dataForCsv3(){ //Income per peson per captia
     $.get('/csv3', function(response){
         csvFile2 = JSON.parse(response);
+        file = csvFile2;
         whichFile = 2;
         console.log(whichFile);
         fileName = "income_per_person_gdppercapita_ppp_inflation_adjusted";
@@ -54,6 +56,7 @@ function dataForCsv3(){ //Income per peson per captia
 function dataForCsv4(){ //Life expactancy
     $.get('/csv4', function(response){
         csvFile3 = JSON.parse(response);
+        file = csvFile3;
         whichFile = 3;
         console.log(whichFile);
         fileName = "life_expectancy_years";
@@ -92,6 +95,7 @@ function drawGraph(){
         .attr("transform", "translate(70, 10)")
         .call(y_axis)
  
+
     var xAxisTranslate = height/2 + 10;
 
     svg.append("g")
@@ -169,7 +173,7 @@ function graph(){
     xAxisMax = d3.max(d3.values(csvFile1));
     // yAxisMax = d3.max(csvFile1[2020].aged_25_54_labour_force_participation_rate_percent[year]);
     console.log(xAxisMax);
-    $("svg#temp").remove();
+
     //DrawGraph function used to draw the axis within the SVG element.
     drawGraph();
     //Code used for creating a slider which changes the data to show the requested year.
@@ -187,7 +191,7 @@ function graph(){
         drawData();
       });
     var g = d3.select("div#value").append("svg")
-      .attr("id", "temp")
+      .append("g")
       .attr("transform", "translate(30,30)");
     
     g.call(slider);
@@ -196,7 +200,6 @@ function graph(){
 function drawData(){
     $("svg#data").empty();
     var fileData;
-
     if (whichFile = 1){
         fileData = csvFile1;
     } else if ( whichFile = 2){
@@ -205,7 +208,7 @@ function drawData(){
         fileData = csvFile3;
     }
 
-    var g = d3.select("#axis").append("svg").attr("id", "data").selectAll("g").data(csvFile1)
+    var g = d3.select("#axis").append("svg").attr("id", "data").selectAll("g").data(fileData)
         .attr("padding-left", "40");
     var x = 0;
     
@@ -222,17 +225,17 @@ function drawData(){
         .attr("transform",function(d, i){ 
        //Deciding which file to view
         if(whichFile = 1){   
-            x = csvFile1[i].data.aged_25_54_labour_force_participation_rate_percent[year] * 10;
+            x = csvFile1[i].data.aged_25_54_labour_force_participation_rate_percent[year];
             // fileData = csvFile1;
         } else if(whichFile = 2){        
-            x = csvFile2[i].data.income_per_person_gdppercapita_ppp_inflation_adjusted[year] / 20;
+            x = csvFile2[i].data.income_per_person_gdppercapita_ppp_inflation_adjusted[year];
             // fileData = csvFile2;
         } else if(whichFile = 3){
-            x = csvFile3[i].data.life_expectancy_years[year] * 10;
+            x = csvFile3[i].data.life_expectancy_years[year];
             // fileData = csvFile3;
         }
 
-        drawX = x;
+        drawX = x * 5;
         y = population2radius(popTotal[i].data.population_total[year]);
         drawY = y;
         // return "translate("+ (drawX) + 100 + "," + (500 - (y) / 2) + 40 +")" 
