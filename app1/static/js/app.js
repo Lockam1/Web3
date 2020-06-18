@@ -219,16 +219,20 @@ function drawData(){
 
     // create new 'g' elements for each country
     var en = g.enter().append("g")
+        .style("opacity", 0.2)
+        .on("mouseover", function(d){ 
+            circle.style("opacity", 1)
+        })
         .attr("transform",function(d, i){ 
        //Deciding which file to view
         if(whichFile = 1){   
-            x = csvFile1[i].data.aged_25_54_labour_force_participation_rate_percent[year] * 14;
+            x = csvFile1[i].data.aged_25_54_labour_force_participation_rate_percent[year] * 10;
             // fileData = csvFile1;
         } else if(whichFile = 2){        
             x = csvFile2[i].data.income_per_person_gdppercapita_ppp_inflation_adjusted[year] / 20;
             // fileData = csvFile2;
         } else if(whichFile = 3){
-            x = csvFile3[i].data.life_expectancy_years[year] * 14;
+            x = csvFile3[i].data.life_expectancy_years[year] * 10;
             // fileData = csvFile3;
         }
 
@@ -246,12 +250,7 @@ function drawData(){
         })
         .attr("fill",function(d,i){ return i % 2 == 0 ? "red" : "blue" })
         
-        .on("mouseover", function(d){ 
-            circle.style("opacity", 1)
-        })
-        .on("mouseout", function(d){
-            circle.style("opacity", 0.2)         
-        })
+      
         
 };
    
