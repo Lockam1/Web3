@@ -204,19 +204,14 @@ function drawData(){
     var fileData;
     if (whichFile = 1){
         fileData = csvFile1;
-        var g = d3.select("#axis").append("svg").attr("id", "data").selectAll("g").data(fileData)
-        .attr("padding-left", "40");
     } else if ( whichFile = 2){
         fileData = csvFile2;
-        var g = d3.select("#axis").append("svg").attr("id", "data").selectAll("g").data(fileData)
-        .attr("padding-left", "40");
     } else if (whichFile = 3){
         fileData = csvFile3;
-        var g = d3.select("#axis").append("svg").attr("id", "data").selectAll("g").data(fileData)
-        .attr("padding-left", "40");
     }
 
-    
+    var g = d3.select("#axis").append("svg").attr("id", "data").selectAll("g").data(fileData)
+        .attr("padding-left", "40");
     var x = 0;
     
 
