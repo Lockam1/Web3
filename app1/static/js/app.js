@@ -226,13 +226,13 @@ function drawData(){
         .attr("transform",function(d, i){ 
        //Deciding which file to view
         if(whichFile = 1){   
-            x = csvFile1[i].data.aged_25_54_labour_force_participation_rate_percent[year] * 10;
+            x = csvFile1[i].data.aged_25_54_labour_force_participation_rate_percent[year] * 14;
             // fileData = csvFile1;
         } else if(whichFile = 2){        
             x = csvFile2[i].data.income_per_person_gdppercapita_ppp_inflation_adjusted[year] / 20;
             // fileData = csvFile2;
         } else if(whichFile = 3){
-            x = csvFile3[i].data.life_expectancy_years[year] * 10;
+            x = csvFile3[i].data.life_expectancy_years[year] * 14;
             // fileData = csvFile3;
         }
 
@@ -246,7 +246,7 @@ function drawData(){
     //add a circle to each 'g'
     var circle = en.append("circle")
         .attr("r",function(d,i){ 
-            return population2radius(popTotal[i].data.population_total[year]) / 2 
+            return population2radius(fileData[i].data.life_expectancy_years[year]) / 2 
         })
         .attr("fill",function(d,i){ return i % 2 == 0 ? "red" : "blue" })
         
