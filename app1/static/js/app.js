@@ -201,10 +201,19 @@ function graph(){
 
 function drawData(){
     $("svg#data").empty();
-    var g = d3.select("#axis").append("svg").attr("id", "data").selectAll("g").data(csvFile1)
+    var fileData;
+    if (whichFile = 1){
+        fileData = csvFile1;
+    } else if ( whichFile = 2){
+        fileData = csvFile2;
+    } else if (whichFile = 3){
+        fileData = csvFile3;
+    }
+
+    var g = d3.select("#axis").append("svg").attr("id", "data").selectAll("g").data(fileData)
         .attr("padding-left", "40");
     var x = 0;
-    var fileData;
+    
 
     var drawX;
     var population2radius = d3.scaleSqrt() // instead of scaleLinear()
