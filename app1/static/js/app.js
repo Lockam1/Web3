@@ -218,13 +218,13 @@ function drawData(){
         .attr("transform",function(d, i){ 
        //Deciding which file to view
         if(whichFile = 1){   
-            x = file[i].data.aged_25_54_labour_force_participation_rate_percent[year];
+            x = csvFile2[i].data.aged_25_54_labour_force_participation_rate_percent[year];
             fileData = csvFile1;
         } else if(whichFile = 2){        
-            x = file[i].data.income_per_person_gdppercapita_ppp_inflation_adjusted[year];
+            x = csvFile2[i].data.income_per_person_gdppercapita_ppp_inflation_adjusted[year];
             fileData = csvFile2;
         } else if(whichFile = 3){
-            x = file[i].data.life_expectancy_years[year];
+            x = csvFile3[i].data.life_expectancy_years[year];
             fileData = csvFile3;
         }
 
