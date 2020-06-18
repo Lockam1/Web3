@@ -32,6 +32,7 @@ function getPopulation(){ //Population Total
 };
 function dataForCsv2(){ // labour force particapation
     $.get('/csv2', function(response){
+        drawData().remove();
         csvFile1 = JSON.parse(response);
         whichFile = 1;
         console.log(whichFile);
@@ -42,6 +43,7 @@ function dataForCsv2(){ // labour force particapation
 };
 function dataForCsv3(){ //Income per peson per captia
     $.get('/csv3', function(response){
+        drawData().remove();
         csvFile2 = JSON.parse(response);
         whichFile = 2;
         console.log(whichFile);
@@ -53,6 +55,7 @@ function dataForCsv3(){ //Income per peson per captia
 };
 function dataForCsv4(){ //Life expactancy
     $.get('/csv4', function(response){
+        drawData().remove();
         csvFile3 = JSON.parse(response);
         whichFile = 3;
         console.log(whichFile);
@@ -196,6 +199,7 @@ function graph(){
 function drawData(){
     $("svg#data").empty();
     var fileData;
+
     if (whichFile = 1){
         fileData = csvFile1;
     } else if ( whichFile = 2){
@@ -222,17 +226,17 @@ function drawData(){
         .attr("transform",function(d, i){ 
        //Deciding which file to view
         if(whichFile = 1){   
-            x = csvFile1[i].data.aged_25_54_labour_force_participation_rate_percent[year];
+            x = csvFile1[i].data.aged_25_54_labour_force_participation_rate_percent[year] * 10;
             // fileData = csvFile1;
         } else if(whichFile = 2){        
-            x = csvFile2[i].data.income_per_person_gdppercapita_ppp_inflation_adjusted[year];
+            x = csvFile2[i].data.income_per_person_gdppercapita_ppp_inflation_adjusted[year] / 20;
             // fileData = csvFile2;
         } else if(whichFile = 3){
-            x = csvFile3[i].data.life_expectancy_years[year];
+            x = csvFile3[i].data.life_expectancy_years[year] * 10;
             // fileData = csvFile3;
         }
 
-        drawX = x * 5;
+        drawX = x;
         y = population2radius(popTotal[i].data.population_total[year]);
         drawY = y;
         // return "translate("+ (drawX) + 100 + "," + (500 - (y) / 2) + 40 +")" 
