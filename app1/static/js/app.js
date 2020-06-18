@@ -190,9 +190,9 @@ function graph(){
         //Calling the drawData function which draws the data for the correct year on graph. 
         drawData();
       });
-    // var g = d3.select("div#value").append("svg")
-    //   .append("g")
-    //   .attr("transform", "translate(30,30)");
+    var g = d3.select("div#value").append("svg")
+      
+      .attr("transform", "translate(30,30)");
     
     g.call(slider);
 };
