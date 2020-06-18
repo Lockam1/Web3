@@ -33,7 +33,6 @@ function getPopulation(){ //Population Total
 function dataForCsv2(){ // labour force particapation
     $.get('/csv2', function(response){
         csvFile1 = JSON.parse(response);
-        file = csvFile1;
         whichFile = 1;
         console.log(whichFile);
         fileName = "aged_25_54_labour_force_participation_rate_percent";
@@ -44,7 +43,6 @@ function dataForCsv2(){ // labour force particapation
 function dataForCsv3(){ //Income per peson per captia
     $.get('/csv3', function(response){
         csvFile2 = JSON.parse(response);
-        file = csvFile2;
         whichFile = 2;
         console.log(whichFile);
         fileName = "income_per_person_gdppercapita_ppp_inflation_adjusted";
@@ -56,7 +54,6 @@ function dataForCsv3(){ //Income per peson per captia
 function dataForCsv4(){ //Life expactancy
     $.get('/csv4', function(response){
         csvFile3 = JSON.parse(response);
-        file = csvFile3;
         whichFile = 3;
         console.log(whichFile);
         fileName = "life_expectancy_years";
@@ -95,7 +92,6 @@ function drawGraph(){
         .attr("transform", "translate(70, 10)")
         .call(y_axis)
  
-
     var xAxisTranslate = height/2 + 10;
 
     svg.append("g")
@@ -209,7 +205,7 @@ function drawData(){
     }
 
     var g = d3.select("#axis").append("svg").attr("id", "data").selectAll("g")
-        .data(csvfile2)
+        .data(fileData)
         .attr("padding-left", "40");
     var x = 0;
     
