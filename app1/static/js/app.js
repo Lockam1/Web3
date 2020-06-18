@@ -32,7 +32,6 @@ function getPopulation(){ //Population Total
 };
 function dataForCsv2(){ // labour force particapation
     $.get('/csv2', function(response){
-        drawData().remove();
         csvFile1 = JSON.parse(response);
         whichFile = 1;
         console.log(whichFile);
@@ -43,7 +42,6 @@ function dataForCsv2(){ // labour force particapation
 };
 function dataForCsv3(){ //Income per peson per captia
     $.get('/csv3', function(response){
-        drawData().remove();
         csvFile2 = JSON.parse(response);
         whichFile = 2;
         console.log(whichFile);
@@ -55,7 +53,6 @@ function dataForCsv3(){ //Income per peson per captia
 };
 function dataForCsv4(){ //Life expactancy
     $.get('/csv4', function(response){
-        drawData().remove();
         csvFile3 = JSON.parse(response);
         whichFile = 3;
         console.log(whichFile);
