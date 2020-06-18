@@ -1,7 +1,7 @@
 const fetch = require("node-fetch");
 const Window = require('window');
 const jsdom = require("jsdom");
-const { JSDOM } = jsdom;
+// const { JSDOM } = jsdom;
 // const LocalStorage = require('node-localstorage').LocalStorage;
 const window = new Window();
 //global.document = new JSDOM(html).window.document;
