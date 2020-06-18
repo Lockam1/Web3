@@ -1,7 +1,7 @@
 const fetch = require("node-fetch");
 const Window = require('window');
 const jsdom = require("jsdom");
-// const { JSDOM } = jsdom;
+const { JSDOM } = jsdom;
 // const LocalStorage = require('node-localstorage').LocalStorage;
 const window = new Window();
 //global.document = new JSDOM(html).window.document;
@@ -14,7 +14,7 @@ var url1 = "http://192.168.1.156:80/csv4"; //Home network
 // //   console.log(data)
 //     localStorage.setItem('data', JSON.stringify(data))
 //     usableData = localStorage.getItem('data'); 
-//     console.log('UsableData: ', JSON.parse(usableData));
+//     console.log('UsableData: ', JSON.parse(usableData));o
 // });
 
 //Selecting the select block to append option to as a dropdown.

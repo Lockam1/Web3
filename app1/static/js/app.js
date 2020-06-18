@@ -191,8 +191,6 @@ function graph(){
         drawData();
       });
     var g = d3.select("div#value").append("svg")
-      .attr("width", 500)
-      .attr("height", 100)
       .append("g")
       .attr("transform", "translate(30,30)");
     
