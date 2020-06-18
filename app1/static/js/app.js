@@ -220,7 +220,7 @@ function drawData(){
         .domain([0, 2e9])
         .range([0, 300])
 
-    
+    //addthis
 
     // create new 'g' elements for each country
     var en = g.enter().append("g")
