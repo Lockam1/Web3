@@ -187,8 +187,8 @@ function graph(){
         year = Math.round(val)
         d3.select("p#value").text(year)
         //console.log(year)
-        //Calling the graph2 function which draws the data for the correct year on graph. 
-        graph2();
+        //Calling the drawData function which draws the data for the correct year on graph. 
+        drawData();
       });
     var g = d3.select("div#value").append("svg")
       .attr("width", 500)
