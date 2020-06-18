@@ -191,7 +191,7 @@ function graph(){
         drawData();
       });
     var g = d3.select("div#value").append("svg")
-      .append("g")
+      
       .attr("transform", "translate(30,30)");
     
     g.call(slider);
