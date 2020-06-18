@@ -173,7 +173,7 @@ function graph(){
     xAxisMax = d3.max(d3.values(csvFile1));
     // yAxisMax = d3.max(csvFile1[2020].aged_25_54_labour_force_participation_rate_percent[year]);
     console.log(xAxisMax);
-
+    $("svg#temp").remove();
     //DrawGraph function used to draw the axis within the SVG element.
     drawGraph();
     //Code used for creating a slider which changes the data to show the requested year.
@@ -191,7 +191,7 @@ function graph(){
         drawData();
       });
     var g = d3.select("div#value").append("svg")
-      
+      .attr("id", "temp")
       .attr("transform", "translate(30,30)");
     
     g.call(slider);
