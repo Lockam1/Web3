@@ -35,6 +35,7 @@ function dataForCsv2(){ // labour force particapation
         csvFile1 = JSON.parse(response);
         file = csvFile1;
         whichFile = 1;
+        console.log(whichFile);
         fileName = "aged_25_54_labour_force_participation_rate_percent";
         getPopulation()
         graph()
@@ -45,7 +46,10 @@ function dataForCsv3(){ //Income per peson per captia
         csvFile2 = JSON.parse(response);
         file = csvFile2;
         whichFile = 2;
+        console.log(whichFile);
         fileName = "income_per_person_gdppercapita_ppp_inflation_adjusted";
+        getPopulation()
+        graph()
         // showFile2();
     });
 };
@@ -54,13 +58,16 @@ function dataForCsv4(){ //Life expactancy
         csvFile3 = JSON.parse(response);
         file = csvFile3;
         whichFile = 3;
+        console.log(whichFile);
         fileName = "life_expectancy_years";
+        getPopulation()
+        graph()
         // showFile3();
     });
 };
 
 //Function dedicated to drawing the axis on the graph
-function drawGraph(){
+function drawAxis(){
     $("svg").empty(); //Emptying the svg ement at every intervile of the slider so the data dosnt stack on top oif its self
 
     var width = 1100, height = 1100;
@@ -97,69 +104,69 @@ function drawGraph(){
    
 }
 
-//Functions for displaying the data for the three files.
-function showFile1(){
-    $("svg").empty();  
-    // a common thing is to 'wrap' some elements in a 'g' container (group)
-    // this is like wrapping html elements in a container div
-    var g = d3.select("svg").selectAll("g").data(csvFile1);
+// //Functions for displaying the data for the three files.
+// function showFile1(){
+//     $("svg").empty();  
+//     // a common thing is to 'wrap' some elements in a 'g' container (group)
+//     // this is like wrapping html elements in a container div
+//     var g = d3.select("svg").selectAll("g").data(csvFile1);
 
-    // create new 'g' elements for each country
-    var en = g.enter().append("g")
-        .attr("transform",function(d){ 
-        return "translate("+ (Math.random() * 1100) + 40 + "," + (Math.random() * 600) + 40 +")" 
-    });
+//     // create new 'g' elements for each country
+//     var en = g.enter().append("g")
+//         .attr("transform",function(d){ 
+//         return "translate("+ (Math.random() * 1100) + 40 + "," + (Math.random() * 600) + 40 +")" 
+//     });
 
-    // add a circle to each 'g'
-    var circle = en.append("circle")
-        .attr("r",function(d){ return Math.random() * 20 })
-        .attr("fill",function(d,i){ return i % 2 == 0 ? "red" : "blue" });
+//     // add a circle to each 'g'
+//     var circle = en.append("circle")
+//         .attr("r",function(d){ return Math.random() * 20 })
+//         .attr("fill",function(d,i){ return i % 2 == 0 ? "red" : "blue" });
 
-    // add a text to each 'g'
-    en.append("text").text(function(d){ return d.name });
-};
+//     // add a text to each 'g'
+//     en.append("text").text(function(d){ return d.name });
+// };
 
-function showFile2(){
-    $("svg").empty();
-    // a common thing is to 'wrap' some elements in a 'g' container (group)
-    // this is like wrapping html elements in a container div
-    var g = d3.select("svg").selectAll("g").data(csvFile2);
+// function showFile2(){
+//     $("svg").empty();
+//     // a common thing is to 'wrap' some elements in a 'g' container (group)
+//     // this is like wrapping html elements in a container div
+//     var g = d3.select("svg").selectAll("g").data(csvFile2);
 
-    // create new 'g' elements for each country
-    var en = g.enter().append("g")
-        .attr("transform",function(d){ 
-        return "translate("+ (Math.random() * 1100) + 40 + "," + (Math.random() * 600) + 40 +")" 
-    });
+//     // create new 'g' elements for each country
+//     var en = g.enter().append("g")
+//         .attr("transform",function(d){ 
+//         return "translate("+ (Math.random() * 1100) + 40 + "," + (Math.random() * 600) + 40 +")" 
+//     });
 
-    // add a circle to each 'g'
-    var circle = en.append("circle")
-        .attr("r",function(d){ return Math.random() * 20 })
-        .attr("fill",function(d,i){ return i % 2 == 0 ? "green" : "yellow" });
+//     // add a circle to each 'g'
+//     var circle = en.append("circle")
+//         .attr("r",function(d){ return Math.random() * 20 })
+//         .attr("fill",function(d,i){ return i % 2 == 0 ? "green" : "yellow" });
 
-    // add a text to each 'g'
-    en.append("text").text(function(d){ return d.name });
-};
+//     // add a text to each 'g'
+//     en.append("text").text(function(d){ return d.name });
+// };
 
-function showFile3(){
-    $("svg").empty();
-    // a common thing is to 'wrap' some elements in a 'g' container (group)
-    // this is like wrapping html elements in a container div
-    var g = d3.select("svg").selectAll("g").data(csvFile3);
+// function showFile3(){
+//     $("svg").empty();
+//     // a common thing is to 'wrap' some elements in a 'g' container (group)
+//     // this is like wrapping html elements in a container div
+//     var g = d3.select("svg").selectAll("g").data(csvFile3);
 
-    // create new 'g' elements for each country
-    var en = g.enter().append("g")
-        .attr("transform",function(d){ 
-        return "translate("+ (Math.random() * 1100) + 40 + "," + (Math.random() * 600) + 40 +")" 
-    });
+//     // create new 'g' elements for each country
+//     var en = g.enter().append("g")
+//         .attr("transform",function(d){ 
+//         return "translate("+ (Math.random() * 1100) + 40 + "," + (Math.random() * 600) + 40 +")" 
+//     });
 
-    // add a circle to each 'g'
-    var circle = en.append("circle")
-        .attr("r",function(d){ return Math.random() * 20 })
-        .attr("fill",function(d,i){ return i % 2 == 0 ? "orange" : "pink" });
+//     // add a circle to each 'g'
+//     var circle = en.append("circle")
+//         .attr("r",function(d){ return Math.random() * 20 })
+//         .attr("fill",function(d,i){ return i % 2 == 0 ? "orange" : "pink" });
 
-    // add a text to each 'g'
-    en.append("text").text(function(d){ return d.name });
-};
+//     // add a text to each 'g'
+//     en.append("text").text(function(d){ return d.name });
+// };
 
 //Function for calling and generating the visuals accioated with the csv data set 1.
 function graph(){
@@ -168,7 +175,7 @@ function graph(){
     console.log(xAxisMax);
 
     //DrawGraph function used to draw the axis within the SVG element.
-    drawGraph();
+    drawAxis();
     //Code used for creating a slider which changes the data to show the requested year.
     var data = [1990, 2030];
     var slider = d3Slider.sliderHorizontal()
@@ -180,8 +187,8 @@ function graph(){
         year = Math.round(val)
         d3.select("p#value").text(year)
         //console.log(year)
-        //Calling the graph2 function which draws the data for the correct year on graph. 
-        graph2();
+        //Calling the drawGraph function which draws the data for the correct year on graph. 
+        drawData();
       });
     var g = d3.select("div#value").append("svg")
       .attr("width", 500)
@@ -192,7 +199,7 @@ function graph(){
     g.call(slider);
 };
 
-function graph2(){
+function drawData(){
     $("svg#data").empty();
     var g = d3.select("#axis").append("svg").attr("id", "data").selectAll("g").data(csvFile1)
         .attr("padding-left", "40");
@@ -208,16 +215,14 @@ function graph2(){
     var en = g.enter().append("g")
         .attr("transform",function(d, i){ 
        //Deciding which file to view
-        if(whichFile = 1){
-            console.log(whichFile);
+        if(whichFile = 1){   
             x = file[i].data.aged_25_54_labour_force_participation_rate_percent[year];
-        } else if(whichFile = 2){
-            console.log(whichFile);
+        } else if(whichFile = 2){        
             x = file[i].data.income_per_person_gdppercapita_ppp_inflation_adjusted[year];
         } else if(whichFile = 3){
-            console.log(whichFile);
             x = file[i].data.life_expectancy_years[year];
         }
+
         drawX = x * 5;
         y = population2radius(popTotal[i].data.population_total[year]);
         drawY = y;
