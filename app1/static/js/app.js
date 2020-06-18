@@ -219,13 +219,6 @@ function drawData(){
 
     // create new 'g' elements for each country
     var en = g.enter().append("g")
-        .style("opacity", 0.2)
-        .on("mouseover", function(d){ 
-            circle.style("opacity", 1)
-        })
-        .on("mouseout", function(d){
-            circle.style("opacity", 0.2)         
-        })
         .attr("transform",function(d, i){ 
        //Deciding which file to view
         if(whichFile = 1){   
@@ -253,7 +246,12 @@ function drawData(){
         })
         .attr("fill",function(d,i){ return i % 2 == 0 ? "red" : "blue" })
         
-      
+        .on("mouseover", function(d){ 
+            circle.style("opacity", 1)
+        })
+        .on("mouseout", function(d){
+            circle.style("opacity", 0.2)         
+        })
         
 };
    
