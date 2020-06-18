@@ -223,6 +223,9 @@ function drawData(){
         .on("mouseover", function(d){ 
             circle.style("opacity", 1)
         })
+        .on("mouseout", function(d){
+            circle.style("opacity", 0.2)         
+        })
         .attr("transform",function(d, i){ 
        //Deciding which file to view
         if(whichFile = 1){   
