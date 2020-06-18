@@ -208,7 +208,8 @@ function drawData(){
         fileData = csvFile3;
     }
 
-    var g = d3.select("#axis").append("svg").attr("id", "data").selectAll("g").data(fileData)
+    var g = d3.select("#axis").append("svg").attr("id", "data").selectAll("g")
+        .data(csvfile2)
         .attr("padding-left", "40");
     var x = 0;
     
