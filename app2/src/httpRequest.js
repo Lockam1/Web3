@@ -36,7 +36,7 @@ async function getData(){
         opt.value = temp;
         console.log(temp);
         // if (sel != null){
-        window.document.getElementsByClassName("select")[0].appendChild(opt);
+        window.document.getElementsByClassName("select")[0].appendChild(opt); //Appending a new select element for each country name
         sel.appendChild(opt);
         console.log("Option for " + temp + " added");
         // }
